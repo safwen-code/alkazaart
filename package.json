@@ -10,8 +10,8 @@
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node backend/seeder",
-    "data:destroy": "node backend/seeder -d",
-    "build": "npm i"
+    "data:destroy": "node backend/seeder -d"
+    
   },
   "author": "safwen-code",
   "license": "ISC",
