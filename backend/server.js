@@ -6,6 +6,8 @@ import cors from 'cors'
 import userRoutes from './routes/userRoutes.js'
 import shipRoutes from './routes/shipRoutes.js'
 import fornisseurRoutes from './routes/fornisseurRoutes.js'
+import utilisateurRoutes from './routes/utilisateurRoutes.js'
+
 import path from 'path'
 
 dotenv.config()
@@ -23,6 +25,7 @@ connectDB()
 app.use('/api/users', userRoutes)
 app.use('/api/ship', shipRoutes)
 app.use('/api/fornisseur', fornisseurRoutes)
+app.use('/api/utilisateur', utilisateurRoutes)
 
 const __dirname = path.resolve()
 if (process.env.NODE_ENV === 'production') {
