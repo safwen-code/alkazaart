@@ -14,7 +14,7 @@ import axios from 'axios'
 
 //create ship
 export const shipCreateAction = (id, ship) => async (dispatch, getState) => {
-  console.log(ship)
+  //console.log(ship)
   try {
     dispatch({
       type: SHIP_CREATE_REQUEST,

@@ -14,6 +14,11 @@ import {
   loginFornisseurReducer,
 } from './reducer/fornisseurReducers'
 
+import {
+  utilisateurReducer,
+  AllutilisateurReducer,
+} from './reducer/utilisateurReducers'
+
 import { AlertReducer } from './reducer/AlertReducers'
 const reducer = combineReducers({
   alertThing: AlertReducer,
@@ -24,6 +29,8 @@ const reducer = combineReducers({
   fornisseurCreate: fornisseurCreateReducer,
   fornisseurList: AllfornisseurReducer,
   fornisseurLogin: loginFornisseurReducer,
+  utilisateurCreate: utilisateurReducer,
+  utilisateurList: AllutilisateurReducer,
 })
 
 const middleware = [thunk]

@@ -17,7 +17,14 @@ import MenuIcon from '@mui/icons-material/Menu'
 import atvyl from '../images/atvyl.jpg'
 import { alpha } from '@mui/system'
 
-const pages = ['listship', 'addship', 'addfornisseur', 'listfornisseur']
+const pages = [
+  'listship',
+  'addship',
+  'addfornisseur',
+  'listfornisseur',
+  'addutilisateur',
+  'listutilisateur',
+]
 
 const Navbar = ({ setActiveNavItem }) => {
   const [anchorElNav, setAnchorElNav] = useState(null)
@@ -30,7 +37,6 @@ const Navbar = ({ setActiveNavItem }) => {
 
   const handleCloseNavMenu = (page) => {
     setAnchorElNav(null)
-
     switch (page) {
       case 'listship':
         navigate('/dashadmin/listship')
@@ -47,6 +53,14 @@ const Navbar = ({ setActiveNavItem }) => {
       case 'listfornisseur':
         navigate('/dashadmin/listfornisseur')
         setActiveNavItem('/dashadmin/listfornisseur')
+        break
+      case 'addutilisateur':
+        navigate('/dashadmin/addutilisateur')
+        setActiveNavItem('/dashadmin/addutilisateur')
+        break
+      case 'listutilisateur':
+        navigate('/dashadmin/listutilisateur')
+        setActiveNavItem('/dashadmin/listutilisateur')
         break
       default:
         navigate('/dashadmin/listship')
@@ -73,6 +87,15 @@ const Navbar = ({ setActiveNavItem }) => {
         navigate('/dashadmin/listfornisseur')
         setActiveNavItem('/dashadmin/listfornisseur')
         break
+      case 'addutilisateur':
+        navigate('/dashadmin/addutilisateur')
+        setActiveNavItem('/dashadmin/addutilisateur')
+        break
+      case 'listutilisateur':
+        navigate('/dashadmin/listutilisateur')
+        setActiveNavItem('/dashadmin/listutilisateur')
+        break
+
       default:
         navigate('/dashadmin/listship')
         setActiveNavItem('/dashadmin/listship')
