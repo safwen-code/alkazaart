@@ -1,5 +1,13 @@
 import React, { useState } from 'react'
-import { Box, TextField, Button, InputLabel } from '@mui/material'
+import {
+  Box,
+  TextField,
+  Button,
+  InputLabel,
+  FormControl,
+  Select,
+  MenuItem,
+} from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -21,6 +29,18 @@ const SecondStep = ({
   const [etdIstanbul, setetdIstanbul] = useState('')
   const [CMR, setCMR] = useState('')
   const [trailer, settrailer] = useState('')
+
+  const orderstatusInfo = [
+    'New Shipment announced ',
+    'Corgo still not ready',
+    'Cargo ready',
+    'Pending payement',
+    'Processing',
+    'On hold',
+    'Delivered',
+  ]
+
+  const pickelocationInfo = ['Mars Logistics Hub', 'Suppliers Warehouse']
 
   const handelClick = () => {
     handleNext()
@@ -58,6 +78,7 @@ const SecondStep = ({
   //quite step
   const testQuit = () => {
     //work to :: send data /ship/adddata
+    // console.log(datatosend)
 
     dispatch(shipCreateAction(idFornisseur, datatosend))
       .then(() => {
@@ -95,14 +116,26 @@ const SecondStep = ({
           />
         </div>
         <div>
-          <TextField
-            id="outlined-required"
-            label="Order Status"
-            color="error"
-            value={orderstatus}
-            onChange={(e) => setorderstatus(e.target.value)}
-          />
+          <FormControl
+            sx={{ width: { xs: '86%', md: '57%' }, marginLeft: '7px' }}
+            mt={2}
+            mb={2}
+          >
+            <InputLabel id="demo-simple-select-label">Order Status</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={orderstatus}
+              label="Order Status"
+              onChange={(e) => setorderstatus(e.target.value)}
+            >
+              {orderstatusInfo.map((order) => (
+                <MenuItem value={order}>{order}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </div>
+
         <div>
           <InputLabel
             htmlFor="outlined-required"
@@ -139,13 +172,26 @@ const SecondStep = ({
           />
         </div>
         <div>
-          <TextField
-            id="outlined-required"
-            label="Picked up Location"
-            color="error"
-            value={pickelocation}
-            onChange={(e) => setpickelocation(e.target.value)}
-          />
+          <FormControl
+            sx={{ width: { xs: '86%', md: '57%' }, marginLeft: '7px' }}
+            mt={2}
+            mb={2}
+          >
+            <InputLabel id="demo-simple-select-label">
+              Picked up Location
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={pickelocation}
+              label="Picked up Location"
+              onChange={(e) => setpickelocation(e.target.value)}
+            >
+              {pickelocationInfo.map((pickedup) => (
+                <MenuItem value={pickedup}>{pickedup}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </div>
         <div>
           <TextField

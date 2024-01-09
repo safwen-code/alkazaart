@@ -5,9 +5,13 @@ import {
   Button,
   InputAdornment,
   InputLabel,
+  FormControl,
+  Select,
+  MenuItem,
 } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+
 const FirstShipp = ({
   handleNext,
   setshipdata,
@@ -25,6 +29,26 @@ const FirstShipp = ({
   const [packages, setpackages] = useState('')
   const [weight, setweight] = useState('')
   const [deliveryterms, setdeliveryterms] = useState('')
+
+  const incoternInfo = [
+    'FOB',
+    'EXW',
+    'DAP',
+    'DDP',
+    'CIF',
+    'CIP',
+    'CPT',
+    'DPU',
+    'FAS',
+    'FCA',
+  ]
+
+  const deliverytermsInfo = [
+    'free',
+    'Cash against documents',
+    'Avalized counter-draft',
+    'Supplier release',
+  ]
 
   const handelClick = () => {
     //next step
@@ -62,7 +86,9 @@ const FirstShipp = ({
   const navigate = useNavigate()
   //quite step
   const testQuit = () => {
+    // console.log(firststep)
     // console.log(idFornisseur)
+
     dispatch(shipCreateAction(idFornisseur, { firststep }))
       .then(() => {
         navigate('/dashadmin/listship')
@@ -141,13 +167,24 @@ const FirstShipp = ({
           />
         </div>
         <div>
-          <TextField
-            id="outlined-required"
-            label="Incotern"
-            color="error"
-            value={incotern}
-            onChange={(e) => setincotern(e.target.value)}
-          />
+          <FormControl
+            sx={{ width: { xs: '86%', md: '70%' }, marginLeft: '7px' }}
+            mt={2}
+            mb={2}
+          >
+            <InputLabel id="demo-simple-select-label">Incotern</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={incotern}
+              label="Incotern"
+              onChange={(e) => setincotern(e.target.value)}
+            >
+              {incoternInfo.map((inco) => (
+                <MenuItem value={inco}>{inco}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </div>
         <div>
           <TextField
@@ -183,13 +220,26 @@ const FirstShipp = ({
           />
         </div>
         <div>
-          <TextField
-            id="outlined-required"
-            label="Delivery Terms"
-            color="error"
-            value={deliveryterms}
-            onChange={(e) => setdeliveryterms(e.target.value)}
-          />
+          <FormControl
+            sx={{ width: { xs: '86%', md: '70%' }, marginLeft: '7px' }}
+            mt={2}
+            mb={2}
+          >
+            <InputLabel id="demo-simple-select-label">
+              Delivery Terms
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={deliveryterms}
+              label="Delivery Terms"
+              onChange={(e) => setdeliveryterms(e.target.value)}
+            >
+              {deliverytermsInfo.map((devterm) => (
+                <MenuItem value={devterm}>{devterm}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </div>
       </Box>
       <Box sx={{ mb: 2 }}>

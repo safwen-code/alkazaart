@@ -14,6 +14,7 @@ import {
 import { SelectBox } from 'devextreme-react/select-box'
 
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import ThirdStep from '../ShippProcess/ThirdStep'
 import FirstShipp from '../ShippProcess/FirstShipp'
@@ -64,11 +65,19 @@ const AddShipp = ({ setActiveNavItem }) => {
     setActiveStep(0)
   }
 
+  const navigate = useNavigate()
   //add shippemnt
   const addship = () => {
     console.log(idFornisseur)
     if (userinfo.isAdmin) {
       dispatch(shipCreateAction(idFornisseur, shipdata))
+        .then(() => {
+          navigate('/dashadmin/listship')
+          setActiveNavItem('/dashadmin/listship')
+        })
+        .catch((error) => {
+          console.error('Error creating fornisseur:', error)
+        })
     }
   }
 
