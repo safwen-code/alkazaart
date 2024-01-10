@@ -9,10 +9,10 @@ import {
   shipNbrReducer,
 } from './reducer/shipReducers'
 import {
-  fornisseurCreateReducer,
-  AllfornisseurReducer,
-  loginFornisseurReducer,
-} from './reducer/fornisseurReducers'
+  clientCreateReducer,
+  AllclientReducer,
+  loginClientReducer,
+} from './reducer/clientReducers'
 
 import {
   utilisateurReducer,
@@ -27,9 +27,9 @@ const reducer = combineReducers({
   shipCreate: shipCreateReducer,
   shipList: shipListReducer,
   shipNbr: shipNbrReducer,
-  fornisseurCreate: fornisseurCreateReducer,
-  fornisseurList: AllfornisseurReducer,
-  fornisseurLogin: loginFornisseurReducer,
+  clientCreate: clientCreateReducer,
+  clientList: AllclientReducer,
+  clientLogin: loginClientReducer,
   utilisateurCreate: utilisateurReducer,
   utilisateurList: AllutilisateurReducer,
 })

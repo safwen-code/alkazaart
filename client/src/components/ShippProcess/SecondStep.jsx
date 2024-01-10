@@ -16,7 +16,7 @@ const SecondStep = ({
   handleNext,
   handleBack,
   setshipdata,
-  idFornisseur,
+  idClient,
   shipCreateAction,
   setActiveNavItem,
 }) => {
@@ -80,7 +80,7 @@ const SecondStep = ({
     //work to :: send data /ship/adddata
     // console.log(datatosend)
 
-    dispatch(shipCreateAction(idFornisseur, datatosend))
+    dispatch(shipCreateAction(idClient, datatosend))
       .then(() => {
         navigate('/dashadmin/listship')
         setActiveNavItem('/dashadmin/listship')

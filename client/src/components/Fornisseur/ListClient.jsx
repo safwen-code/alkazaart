@@ -7,9 +7,9 @@ import {
 } from 'devextreme-react/data-grid'
 import { useSelector, useDispatch } from 'react-redux'
 import { Container, Box } from '@mui/material'
-import { fornisseurListAction } from '../../actions/fornisseurAction'
+import { clientListAction } from '../../actions/clientAction'
 
-const ListFornisseur = () => {
+const ListClient = () => {
   //screen responsive thing
   const [isSmallScreen, setIsSmallScreen] = useState(false)
 
@@ -29,18 +29,18 @@ const ListFornisseur = () => {
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fornisseurListAction())
+    dispatch(clientListAction())
   }, [dispatch])
 
-  const fornisseurList = useSelector((state) => state.fornisseurList)
-  const { fornisseurs } = fornisseurList
+  const clientList = useSelector((state) => state.clientList)
+  const { clients } = clientList
 
   return (
     <Container>
       <Box sx={{ flexGrow: 1 }} p={1} mt={1}>
-        {fornisseurs && (
+        {clients && (
           <DataGrid
-            dataSource={fornisseurs}
+            dataSource={clients}
             keyExpr="_id"
             showBorders={true}
             focusedRowEnabled={true}
@@ -57,4 +57,4 @@ const ListFornisseur = () => {
   )
 }
 
-export default ListFornisseur
+export default ListClient

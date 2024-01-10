@@ -22,8 +22,8 @@ import { useDispatch } from 'react-redux'
 const pages = [
   'listship',
   'addship',
-  'addfornisseur',
-  'listfornisseur',
+  'addclient',
+  'listclient',
   'addutilisateur',
   'listutilisateur',
 ]
@@ -48,13 +48,13 @@ const Navbar = ({ setActiveNavItem }) => {
         navigate('/dashadmin/addship')
         setActiveNavItem('/dashadmin/addship')
         break
-      case 'addfornisseur':
-        navigate('/dashadmin/addfornisseur')
-        setActiveNavItem('/dashadmin/addfornisseur')
+      case 'addclient':
+        navigate('/dashadmin/addclient')
+        setActiveNavItem('/dashadmin/addclient')
         break
-      case 'listfornisseur':
-        navigate('/dashadmin/listfornisseur')
-        setActiveNavItem('/dashadmin/listfornisseur')
+      case 'listclient':
+        navigate('/dashadmin/listclient')
+        setActiveNavItem('/dashadmin/listclient')
         break
       case 'addutilisateur':
         navigate('/dashadmin/addutilisateur')
@@ -81,13 +81,13 @@ const Navbar = ({ setActiveNavItem }) => {
         navigate('/dashadmin/addship')
         setActiveNavItem('/dashadmin/addship')
         break
-      case 'addfornisseur':
-        navigate('/dashadmin/addfornisseur')
-        setActiveNavItem('/dashadmin/addfornisseur')
+      case 'addclient':
+        navigate('/dashadmin/addclient')
+        setActiveNavItem('/dashadmin/addclient')
         break
-      case 'listfornisseur':
-        navigate('/dashadmin/listfornisseur')
-        setActiveNavItem('/dashadmin/listfornisseur')
+      case 'listclient':
+        navigate('/dashadmin/listclient')
+        setActiveNavItem('/dashadmin/listclient')
         break
       case 'addutilisateur':
         navigate('/dashadmin/addutilisateur')

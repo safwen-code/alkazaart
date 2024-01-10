@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom'
 const FirstShipp = ({
   handleNext,
   setshipdata,
-  idFornisseur,
+  idClient,
   shipCreateAction,
   setActiveNavItem,
 }) => {
@@ -87,9 +87,9 @@ const FirstShipp = ({
   //quite step
   const testQuit = () => {
     // console.log(firststep)
-    // console.log(idFornisseur)
+    // console.log(idClient)
 
-    dispatch(shipCreateAction(idFornisseur, { firststep }))
+    dispatch(shipCreateAction(idClient, { firststep }))
       .then(() => {
         navigate('/dashadmin/listship')
         setActiveNavItem('/dashadmin/listship')

@@ -8,7 +8,7 @@ const ThirdStep = ({
   handleBack,
   setshipdata,
   shipdata,
-  idFornisseur,
+  idClient,
   shipCreateAction,
   setActiveNavItem,
 }) => {
@@ -47,7 +47,7 @@ const ThirdStep = ({
 
   const testQuit = () => {
     //work to :: send data /ship/adddata
-    dispatch(shipCreateAction(idFornisseur, datatosend))
+    dispatch(shipCreateAction(idClient, datatosend))
       .then(() => {
         navigate('/dashadmin/listship')
         setActiveNavItem('/dashadmin/listship')

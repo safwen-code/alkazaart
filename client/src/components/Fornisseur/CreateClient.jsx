@@ -9,9 +9,9 @@ import {
 } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { fornisseurCreateAction } from '../../actions/fornisseurAction.js'
+import { clientCreateAction } from '../../actions/clientAction.js'
 
-const CreateFornisseur = ({ setActiveNavItem }) => {
+const CreateClient = ({ setActiveNavItem }) => {
   const [name, setname] = useState('')
   const [email, setemail] = useState('')
   const [password, setpassword] = useState('')
@@ -21,10 +21,10 @@ const CreateFornisseur = ({ setActiveNavItem }) => {
 
   const submitHundler = (e) => {
     e.preventDefault()
-    dispatch(fornisseurCreateAction({ name, email, password }))
+    dispatch(clientCreateAction({ name, email, password }))
       .then(() => {
-        navigate('/dashadmin/listfornisseur')
-        setActiveNavItem('/dashadmin/listfornisseur')
+        navigate('/dashadmin/listclient')
+        setActiveNavItem('/dashadmin/listclient')
       })
       .catch((error) => {
         console.error('Error creating fornisseur:', error)
@@ -58,7 +58,7 @@ const CreateFornisseur = ({ setActiveNavItem }) => {
             textAlign: 'center',
             color: '#B80000',
           }}
-          title="Create Fornisseur"
+          title="Create Client"
         />
         <CardContent
           sx={{
@@ -71,7 +71,7 @@ const CreateFornisseur = ({ setActiveNavItem }) => {
           <TextField
             required
             id="standard-read-only-input"
-            label="Fornisseur Name"
+            label="Client Name"
             variant="standard"
             margin="dense"
             name="name"
@@ -84,7 +84,7 @@ const CreateFornisseur = ({ setActiveNavItem }) => {
           <TextField
             required
             id="standard-read-only-input"
-            label="Fornisseur Email "
+            label="Client Email "
             variant="standard"
             margin="dense"
             name="email"
@@ -122,4 +122,4 @@ const CreateFornisseur = ({ setActiveNavItem }) => {
   )
 }
 
-export default CreateFornisseur
+export default CreateClient

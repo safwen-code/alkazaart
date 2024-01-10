@@ -8,7 +8,7 @@ import {
   Button,
 } from '@mui/material'
 import { useDispatch } from 'react-redux'
-import { loginfornisseur } from '../../actions/fornisseurAction'
+import { loginclient } from '../../actions/clientAction'
 import { useNavigate } from 'react-router-dom'
 
 const LoginFornisseur = () => {
@@ -19,7 +19,7 @@ const LoginFornisseur = () => {
 
   const navigate = useNavigate()
   const submitHundler = (e) => {
-    let test = dispatch(loginfornisseur(email, password))
+    let test = dispatch(loginclient(email, password))
     if (test) {
       navigate('/dashfournisseur')
     } else {

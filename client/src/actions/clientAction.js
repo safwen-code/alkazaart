@@ -1,23 +1,20 @@
 import {
-  CREATE_FORNISSEUR_REQUEST,
-  CREATE_FORNISSEUR_SUCCESS,
-  CREATE_FORNISSEUR_FAIL,
-  ALL_FORNISSEUR_REQUEST,
-  ALL_FORNISSEUR_SUCCESS,
-  ALL_FORNISSEUR_FAIL,
-  LOGIN_FORNISSEUR_REQUEST,
-  LOGIN_FORNISSEUR_SUCCESS,
-  LOGIN_FORNISSEUR_FAIL,
-} from '../constants/fornisseurConstants'
+  CREATE_CLIENT_REQUEST,
+  CREATE_CLIENT_SUCCESS,
+  CREATE_CLIENT_FAIL,
+  ALL_CLIENT_REQUEST,
+  ALL_CLIENT_SUCCESS,
+  ALL_CLIENT_FAIL,
+  LOGIN_CLIENT_REQUEST,
+  LOGIN_CLIENT_SUCCESS,
+  LOGIN_CLIENT_FAIL,
+} from '../constants/clientConstants'
 import axios from 'axios'
 
-export const fornisseurCreateAction = (dataform) => async (
-  dispatch,
-  getState,
-) => {
+export const clientCreateAction = (dataform) => async (dispatch, getState) => {
   try {
     dispatch({
-      type: CREATE_FORNISSEUR_REQUEST,
+      type: CREATE_CLIENT_REQUEST,
     })
     const {
       userLogin: { userinfo },
@@ -35,10 +32,10 @@ export const fornisseurCreateAction = (dataform) => async (
       dataform,
       config,
     )
-    dispatch({ type: CREATE_FORNISSEUR_SUCCESS, payload: data })
+    dispatch({ type: CREATE_CLIENT_SUCCESS, payload: data })
   } catch (error) {
     dispatch({
-      type: CREATE_FORNISSEUR_FAIL,
+      type: CREATE_CLIENT_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -47,10 +44,10 @@ export const fornisseurCreateAction = (dataform) => async (
   }
 }
 
-export const fornisseurListAction = () => async (dispatch, getState) => {
+export const clientListAction = () => async (dispatch, getState) => {
   try {
     dispatch({
-      type: ALL_FORNISSEUR_REQUEST,
+      type: ALL_CLIENT_REQUEST,
     })
     const {
       userLogin: { userinfo },
@@ -64,10 +61,10 @@ export const fornisseurListAction = () => async (dispatch, getState) => {
     }
 
     const { data } = await axios.get('/api/fornisseur/allfornisseur', config)
-    dispatch({ type: ALL_FORNISSEUR_SUCCESS, payload: data })
+    dispatch({ type: ALL_CLIENT_SUCCESS, payload: data })
   } catch (error) {
     dispatch({
-      type: ALL_FORNISSEUR_FAIL,
+      type: ALL_CLIENT_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -76,9 +73,9 @@ export const fornisseurListAction = () => async (dispatch, getState) => {
   }
 }
 
-export const loginfornisseur = (email, password) => async (dispatch) => {
+export const loginclient = (email, password) => async (dispatch) => {
   dispatch({
-    type: LOGIN_FORNISSEUR_REQUEST,
+    type: LOGIN_CLIENT_REQUEST,
   })
   try {
     const config = {
@@ -92,12 +89,12 @@ export const loginfornisseur = (email, password) => async (dispatch) => {
       config,
     )
     dispatch({
-      type: LOGIN_FORNISSEUR_SUCCESS,
+      type: LOGIN_CLIENT_SUCCESS,
       payload: data,
     })
   } catch (error) {
     dispatch({
-      type: LOGIN_FORNISSEUR_FAIL,
+      type: LOGIN_CLIENT_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

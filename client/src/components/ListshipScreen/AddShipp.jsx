@@ -21,7 +21,7 @@ import FirstShipp from '../ShippProcess/FirstShipp'
 import SecondStep from '../ShippProcess/SecondStep'
 
 import { shipCreateAction } from '../../actions/shipActions'
-import { fornisseurListAction } from '../../actions/fornisseurAction'
+import { clientListAction } from '../../actions/clientAction'
 
 const AddShipp = ({ setActiveNavItem }) => {
   const userLogin = useSelector((state) => state.userLogin)
@@ -30,17 +30,17 @@ const AddShipp = ({ setActiveNavItem }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fornisseurListAction())
+    dispatch(clientListAction())
   }, [dispatch])
   //get all fornisseur
-  const fornisseurList = useSelector((state) => state.fornisseurList)
-  const { fornisseurs } = fornisseurList
+  const clientList = useSelector((state) => state.clientList)
+  const { clients } = clientList
 
   //id fornisseur state
-  const [idFornisseur, setidFornisseur] = useState('')
-  //get id fornisseur
+  const [idClient, setidClient] = useState('')
+  //get id Client
   const onValueChanged = useCallback((e) => {
-    setidFornisseur(e.value)
+    setidClient(e.value)
   }, [])
 
   //steps work
@@ -68,9 +68,9 @@ const AddShipp = ({ setActiveNavItem }) => {
   const navigate = useNavigate()
   //add shippemnt
   const addship = () => {
-    console.log(idFornisseur)
+    console.log(idClient)
     if (userinfo.isAdmin) {
-      dispatch(shipCreateAction(idFornisseur, shipdata))
+      dispatch(shipCreateAction(idClient, shipdata))
         .then(() => {
           navigate('/dashadmin/listship')
           setActiveNavItem('/dashadmin/listship')
@@ -100,7 +100,7 @@ const AddShipp = ({ setActiveNavItem }) => {
         p={1}
       >
         <SelectBox
-          dataSource={fornisseurs}
+          dataSource={clients}
           displayExpr="name"
           valueExpr="_id"
           searchEnabled={true}
@@ -133,7 +133,7 @@ const AddShipp = ({ setActiveNavItem }) => {
               handleNext={handleNext}
               shipdata={shipdata}
               setshipdata={setshipdata}
-              idFornisseur={idFornisseur}
+              idClient={idClient}
               shipCreateAction={shipCreateAction}
               setActiveNavItem={setActiveNavItem}
             />
@@ -154,7 +154,7 @@ const AddShipp = ({ setActiveNavItem }) => {
               handleNext={handleNext}
               shipdata={shipdata}
               setshipdata={setshipdata}
-              idFornisseur={idFornisseur}
+              idClient={idClient}
               shipCreateAction={shipCreateAction}
               setActiveNavItem={setActiveNavItem}
             />
@@ -175,7 +175,7 @@ const AddShipp = ({ setActiveNavItem }) => {
               handleNext={handleNext}
               shipdata={shipdata}
               setshipdata={setshipdata}
-              idFornisseur={idFornisseur}
+              idClient={idClient}
               shipCreateAction={shipCreateAction}
               setActiveNavItem={setActiveNavItem}
             />
