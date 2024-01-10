@@ -20,3 +20,21 @@ export const loginReducer = (state = {}, action) => {
       return state
   }
 }
+
+export const logoutReducer = (state = {}, action) => {
+  switch (action.type) {
+    case LOGOUT_SUCESS:
+      return {
+        loading: false,
+        userLogin: {},
+        shipCreate: {},
+        shipList: {},
+        shipNbr: {},
+        fornisseurCreate: {},
+        utilisateurCreate: {},
+        utilisateurList: {},
+      }
+    default:
+      return state
+  }
+}

@@ -2,6 +2,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
+  LOGOUT_SUCESS,
 } from '../constants/userConstant'
 import axios from 'axios'
 
@@ -34,4 +35,8 @@ export const loginuser = (email, password) => async (dispatch) => {
           : error.message,
     })
   }
+}
+
+export const logoutuser = () => (dispatch) => {
+  dispatch({ type: LOGOUT_SUCESS })
 }

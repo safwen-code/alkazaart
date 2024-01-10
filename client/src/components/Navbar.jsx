@@ -16,6 +16,8 @@ import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
 import atvyl from '../images/atvyl.jpg'
 import { alpha } from '@mui/system'
+import { logoutuser } from '../actions/userActions'
+import { useDispatch } from 'react-redux'
 
 const pages = [
   'listship',
@@ -100,6 +102,14 @@ const Navbar = ({ setActiveNavItem }) => {
         navigate('/dashadmin/listship')
         setActiveNavItem('/dashadmin/listship')
     }
+  }
+
+  const dispatch = useDispatch()
+  //log out
+  const logoutHundler = (e) => {
+    e.preventDefault()
+    dispatch(logoutuser())
+    navigate('/')
   }
 
   return (
@@ -221,6 +231,9 @@ const Navbar = ({ setActiveNavItem }) => {
                 </Button>
               ))}
             </Box>
+            <Button color="inherit" onClick={logoutHundler}>
+              Log Out
+            </Button>
           </Toolbar>
         </Container>
       </AppBar>
