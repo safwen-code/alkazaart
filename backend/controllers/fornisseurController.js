@@ -1,6 +1,7 @@
 import Fornisseur from '../models/fornisseurModel.js'
 import asyncHandler from 'express-async-handler'
 import generateToken from '../utils/generateToken.js'
+import Ship from '../models/shipModel.js'
 
 //auth Fornisseur
 const authFornisseur = asyncHandler(async (req, res) => {
@@ -63,4 +64,24 @@ const testRoute = asyncHandler(async (req, res) => {
   res.send('hi')
 })
 
-export { registerFornisseur, getAllFornisseur, authFornisseur, testRoute }
+//get my ship
+const getMyShip = asyncHandler(async (req, res) => {
+  try {
+    const myships = await Ship.find({ fornisseur: req.client._id.toString() })
+    if (myships) {
+      res.status(201)
+      res.json(myships)
+    }
+  } catch (error) {
+    res.status(400)
+    throw new Error('no no shipps')
+  }
+})
+
+export {
+  getMyShip,
+  registerFornisseur,
+  getAllFornisseur,
+  authFornisseur,
+  testRoute,
+}

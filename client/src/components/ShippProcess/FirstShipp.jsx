@@ -180,8 +180,10 @@ const FirstShipp = ({
               label="Incotern"
               onChange={(e) => setincotern(e.target.value)}
             >
-              {incoternInfo.map((inco) => (
-                <MenuItem value={inco}>{inco}</MenuItem>
+              {incoternInfo.map((inco, index) => (
+                <MenuItem value={inco} key={index}>
+                  {inco}
+                </MenuItem>
               ))}
             </Select>
           </FormControl>

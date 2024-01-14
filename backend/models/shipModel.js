@@ -102,6 +102,9 @@ const shipSchema = mongoose.Schema({
       type: String,
     },
   },
+  createdby: {
+    type: String,
+  },
 })
 const Ship = mongoose.model('Ship', shipSchema)
 export default Ship

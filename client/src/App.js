@@ -4,8 +4,8 @@ import './App.css'
 import { Container } from '@mui/material'
 import Login from './components/Login'
 import DashAdmin from './components/DashAdmin.jsx'
-import LoginFornisseur from './components/Fornisseur/LoginFornisseur.jsx'
-import DashFornisseur from './components/Fornisseur/DashFornisseur.jsx'
+import LoginClient from './components/Clients/LoginClient.jsx'
+import DashClient from './components/Clients/DashClient.jsx'
 
 const App = () => {
   return (
@@ -14,8 +14,8 @@ const App = () => {
         <Routes>
           <Route excat path="/" element={<Login />} />
           <Route path="/dashadmin/*" element={<DashAdmin />}></Route>
-          <Route exact path="/loginfournisseur" element={<LoginFornisseur />} />
-          <Route path="/dashfournisseur/*" element={<DashFornisseur />} />
+          <Route exact path="/loginclient" element={<LoginClient />} />
+          <Route path="/dashclient/*" element={<DashClient />} />
         </Routes>
       </Container>
     </BrowserRouter>

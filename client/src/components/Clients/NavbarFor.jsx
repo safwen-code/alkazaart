@@ -33,16 +33,16 @@ const NavbarFor = ({ setActiveNavItem }) => {
 
     switch (page) {
       case 'myships':
-        navigate('/dashfournisseur/myships')
-        setActiveNavItem('/dashfournisseur/myships')
+        navigate('/dashclient/myships')
+        setActiveNavItem('/dashclient/myships')
         break
       case 'suivieship':
-        navigate('/dashfournisseur/suivieship')
-        setActiveNavItem('/dashfournisseur/suivieship')
+        navigate('/dashclient/suivieship')
+        setActiveNavItem('/dashclient/suivieship')
         break
       default:
-        navigate('/dashfournisseur/myships')
-        setActiveNavItem('/dashfournisseur/myships')
+        navigate('/dashclient/myships')
+        setActiveNavItem('/dashclient/myships')
     }
   }
 
@@ -50,16 +50,16 @@ const NavbarFor = ({ setActiveNavItem }) => {
   const hundelNavItem = (page) => {
     switch (page) {
       case 'myships':
-        navigate('/dashfournisseur/myships')
-        setActiveNavItem('/dashfournisseur/myships')
+        navigate('/dashclient/myships')
+        setActiveNavItem('/dashclient/myships')
         break
       case 'suivieship':
-        navigate('/dashfournisseur/suivieship')
-        setActiveNavItem('/dashfournisseur/suivieship')
+        navigate('/dashclient/suivieship')
+        setActiveNavItem('/dashclient/suivieship')
         break
       default:
-        navigate('/dashfournisseur/myships')
-        setActiveNavItem('/dashfournisseur/myships')
+        navigate('/dashclient/myships')
+        setActiveNavItem('/dashclient/myships')
     }
   }
 

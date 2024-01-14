@@ -8,6 +8,9 @@ import {
   LOGIN_CLIENT_REQUEST,
   LOGIN_CLIENT_SUCCESS,
   LOGIN_CLIENT_FAIL,
+  MY_SHIPS_REQUEST,
+  MY_SHIPS_SUCCESS,
+  MY_SHIPS_FAIL,
 } from '../constants/clientConstants'
 import axios from 'axios'
 
@@ -28,7 +31,7 @@ export const clientCreateAction = (dataform) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.post(
-      '/api/fornisseur/createfornisseur',
+      '/api/client/createfornisseur',
       dataform,
       config,
     )
@@ -60,7 +63,7 @@ export const clientListAction = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get('/api/fornisseur/allfornisseur', config)
+    const { data } = await axios.get('/api/client/allfornisseur', config)
     dispatch({ type: ALL_CLIENT_SUCCESS, payload: data })
   } catch (error) {
     dispatch({
@@ -84,7 +87,7 @@ export const loginclient = (email, password) => async (dispatch) => {
       },
     }
     const { data } = await axios.post(
-      '/api/fornisseur/loginfornisseur',
+      '/api/client/loginfornisseur',
       { email, password },
       config,
     )
@@ -95,6 +98,35 @@ export const loginclient = (email, password) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: LOGIN_CLIENT_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+export const myShipsAction = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: MY_SHIPS_REQUEST,
+    })
+    const {
+      clientLogin: { clientinfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `bearer ${clientinfo.token}`,
+      },
+    }
+
+    const { data } = await axios.get('/api/client/getmyship', config)
+    dispatch({ type: MY_SHIPS_SUCCESS, payload: data })
+  } catch (error) {
+    dispatch({
+      type: MY_SHIPS_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

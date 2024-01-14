@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux'
 import { loginclient } from '../../actions/clientAction'
 import { useNavigate } from 'react-router-dom'
 
-const LoginFornisseur = () => {
+const LoginClient = () => {
   const [email, setemail] = useState('')
   const [password, setpassword] = useState('')
 
@@ -21,9 +21,9 @@ const LoginFornisseur = () => {
   const submitHundler = (e) => {
     let test = dispatch(loginclient(email, password))
     if (test) {
-      navigate('/dashfournisseur')
+      navigate('/dashclient')
     } else {
-      navigate('/loginfournisseur')
+      navigate('/loginclient')
     }
   }
 
@@ -55,7 +55,7 @@ const LoginFornisseur = () => {
             textAlign: 'center',
             color: '#B80000',
           }}
-          title="Espace fournisseur"
+          title="Espace Client"
           //   avatar={
           //     <Avatar
           //       src={atvyl}
@@ -76,7 +76,7 @@ const LoginFornisseur = () => {
           <TextField
             required
             id="standard-read-only-input"
-            label="fournisseur Email "
+            label="Client Email "
             variant="standard"
             margin="dense"
             name="email"
@@ -113,4 +113,4 @@ const LoginFornisseur = () => {
   )
 }
 
-export default LoginFornisseur
+export default LoginClient

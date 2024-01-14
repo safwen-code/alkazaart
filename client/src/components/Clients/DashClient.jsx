@@ -2,28 +2,28 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Container, Box } from '@mui/material'
 import NavbarFor from './NavbarFor.jsx'
-// import Containers from './Containers'
+import ContainersClient from './ContainersClient'
 
 const DashFornisseur = () => {
-  const fornisseurLogin = useSelector((state) => state.fornisseurLogin)
-  const { fornisseurinfo } = fornisseurLogin
+  const clientLogin = useSelector((state) => state.clientLogin)
+  const { clientinfo } = clientLogin
 
-  const [activeNavItem, setActiveNavItem] = useState('/dashfournisseur/myships')
+  const [activeNavItem, setActiveNavItem] = useState('/dashclient/myships')
   return (
     <Container>
-      {fornisseurinfo && (
+      {clientinfo && (
         <NavbarFor
           activeNavItem={activeNavItem}
           setActiveNavItem={setActiveNavItem}
         />
       )}
       <Box sx={{ flexGrow: 1 }} p={1} mt={1}>
-        {/* {userinfo && (
-          <Containers
+        {clientinfo && (
+          <ContainersClient
             activeNavItem={activeNavItem}
             setActiveNavItem={setActiveNavItem}
           />
-        )} */}
+        )}
       </Box>
     </Container>
   )

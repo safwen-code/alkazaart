@@ -68,7 +68,6 @@ const AddShipp = ({ setActiveNavItem }) => {
   const navigate = useNavigate()
   //add shippemnt
   const addship = () => {
-    console.log(idClient)
     if (userinfo.isAdmin) {
       dispatch(shipCreateAction(idClient, shipdata))
         .then(() => {
