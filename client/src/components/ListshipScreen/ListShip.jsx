@@ -75,6 +75,9 @@ const ListShip = () => {
   const openModal = () => setIsModalOpen(true)
   const closeModal = () => setIsModalOpen(false)
 
+  //get id ship
+  const [idship, setidship] = useState()
+
   //create button in cell render
   const renderGridCell = (data) => {
     const { data: rowData } = data
@@ -104,7 +107,11 @@ const ListShip = () => {
             variant="outlined"
             color="secondary"
             size="small"
-            onClick={() => openModal()}
+            onClick={() => {
+              openModal()
+              // console.log(rowData._id)
+              setidship(rowData._id)
+            }}
           >
             Complete shippment process
           </Button>
@@ -120,6 +127,7 @@ const ListShip = () => {
           handleClose={closeModal}
           handleOpen={openModal}
           open={isModalOpen}
+          idship={idship}
         />
       )}{' '}
       {<ListCardSheep userLogin={userLogin} />}

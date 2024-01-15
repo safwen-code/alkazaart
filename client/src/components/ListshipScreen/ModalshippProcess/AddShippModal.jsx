@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   Paper,
   Box,
@@ -12,8 +12,17 @@ import {
   StepIcon,
 } from '@mui/material'
 import { SelectBox } from 'devextreme-react/select-box'
+import { getshipAction } from '../../../actions/shipActions'
+import { useDispatch } from 'react-redux'
 
-const AddShipp = () => {
+const AddShippModal = ({ idship }) => {
+  //   console.log('from addship', idship)
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getshipAction(idship))
+  }, [idship, dispatch])
+
   return (
     <Box
       sx={{
@@ -110,4 +119,4 @@ const AddShipp = () => {
   )
 }
 
-export default AddShipp
+export default AddShippModal
