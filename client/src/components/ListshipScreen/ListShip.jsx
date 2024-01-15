@@ -16,7 +16,7 @@ import ListCardSheep from './ListCardSheep.jsx'
 
 import { shipListAction } from '../../actions/shipActions.js'
 import Alerts from '../../layout/Alerts.jsx'
-import ModalShip from './ModalShip.jsx'
+import ModalShip from '../Clients/ModalShip.jsx'
 
 const ListShip = () => {
   const dispatch = useDispatch()

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button, Modal, Box, Typography } from '@mui/material'
-import AddShipp from './AddShipp'
+import { Button, Modal, Box } from '@mui/material'
+import AddShipp from '../ListshipScreen/AddShipp'
 
 const style = {
   position: 'absolute',
