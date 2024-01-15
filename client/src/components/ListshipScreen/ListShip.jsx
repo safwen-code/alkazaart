@@ -8,7 +8,7 @@ import {
   FilterRow,
 } from 'devextreme-react/data-grid'
 import { useDispatch, useSelector } from 'react-redux'
-import { Chip, Grid } from '@mui/material'
+import { Button, Chip, Grid } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { useTheme } from '@mui/system'
 import MasterDetailGrid from './MasterDetailGrid.jsx'
@@ -48,13 +48,12 @@ const ListShip = () => {
 
   //changer row color
   const getRowStyle = (e) => {
-    // console.log(e.data)
     if (e.rowType === 'data') {
       if (e.data.firststep) {
         e.rowElement.style.backgroundColor = '#FFF5C2'
       }
       if (e.data.firststep && e.data.secondstep) {
-        e.rowElement.style.backgroundColor = '#508D69'
+        e.rowElement.style.backgroundColor = '#9DBC98'
       }
       if (e.data.firststep && e.data.secondstep && e.data.thirdstep) {
         e.rowElement.style.backgroundColor = '#BE3144'
@@ -64,6 +63,48 @@ const ListShip = () => {
 
   //use theme for margin top (responsive thing)
   const theme = useTheme()
+
+  //create button in cell render
+  const renderGridCell = (data) => {
+    const { value, data: rowData } = data
+
+    // Check if 'secondstep' and 'thridstep' exists and is not null or undefined
+    const isSecondStepExist =
+      rowData.hasOwnProperty('secondstep') &&
+      rowData.secondstep !== null &&
+      rowData.secondstep !== undefined
+    const isThirdStepExist =
+      rowData.hasOwnProperty('thirdstep') &&
+      rowData.thirdstep !== null &&
+      rowData.thirdstep !== undefined
+
+    return (
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
+      >
+        <div style={{ marginLeft: '5px' }}>{data.value}</div>
+
+        {(!isSecondStepExist || !isThirdStepExist) && (
+          <Button
+            variant="outlined"
+            color="secondary"
+            size="small"
+            onClick={() => {
+              // Add logic for adding a new row
+              console.log('Add button clicked!')
+              console.log(data)
+            }}
+          >
+            Complete shippment process
+          </Button>
+        )}
+      </div>
+    )
+  }
   return (
     <>
       {<ListCardSheep userLogin={userLogin} />}
@@ -84,15 +125,25 @@ const ListShip = () => {
       <DataGrid
         dataSource={shipList && shipList.ships}
         allowColumnReordering={true}
-        // rowAlternationEnabled={true}
         showBorders={true}
         width="100%"
         keyExpr="_id"
         onContentReady={onContentReady}
         onRowPrepared={getRowStyle}
+        editing={{
+          mode: 'cell',
+          allowUpdating: (options) => {
+            const rowData = options.data
+          },
+        }}
       >
         <Grouping autoExpandAll={false} />
-        <Column dataField="fornisseuremail" />
+
+        <Column
+          dataField="fornisseuremail"
+          allowUpdating={true}
+          cellRender={renderGridCell}
+        ></Column>
         <FilterRow visible={true} />
         <SearchPanel visible={true} />
 
