@@ -13,7 +13,11 @@ import {
 } from '@mui/material'
 import { SelectBox } from 'devextreme-react/select-box'
 import { getshipAction } from '../../../actions/shipActions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import FirstShippModal from './FirstShippModal'
+import SecondStepModal from './SecondStepModal'
+import { useState } from 'react'
+import ThirdStepModal from './ThirdStepModal'
 
 const AddShippModal = ({ idship }) => {
   //   console.log('from addship', idship)
@@ -23,6 +27,30 @@ const AddShippModal = ({ idship }) => {
     dispatch(getshipAction(idship))
   }, [idship, dispatch])
 
+  const shipbyidReducer = useSelector((state) => state.shipbyidReducer)
+
+  //stepthings
+  const [activeStep, setActiveStep] = useState(0)
+  const isFirstStepExist =
+    shipbyidReducer.firststep !== null &&
+    shipbyidReducer.firststep !== undefined
+
+  const isSecondStepExist =
+    shipbyidReducer.secondstep !== null &&
+    shipbyidReducer.secondstep !== undefined
+
+  const isthirdStepExist =
+    shipbyidReducer.thirdstep !== null &&
+    shipbyidReducer.thirdstep !== undefined
+
+  useEffect(() => {
+    // Set initial step based on shipbyidReducer
+    if (isFirstStepExist && !isSecondStepExist && !isthirdStepExist) {
+      setActiveStep(1)
+    } else if (isFirstStepExist && isSecondStepExist && !isthirdStepExist) {
+      setActiveStep(2)
+    }
+  }, [shipbyidReducer, isFirstStepExist, isSecondStepExist, isthirdStepExist])
   return (
     <Box
       sx={{
@@ -50,6 +78,7 @@ const AddShippModal = ({ idship }) => {
       </Grid>
 
       <Stepper
+        activeStep={activeStep}
         orientation="vertical"
         sx={{
           display: 'flex',
@@ -67,7 +96,9 @@ const AddShippModal = ({ idship }) => {
           >
             Shipment Détails
           </StepLabel>
-          <StepContent>First Shipp</StepContent>
+          <StepContent>
+            <FirstShippModal />
+          </StepContent>
         </Step>
         <Step>
           <StepLabel
@@ -78,7 +109,9 @@ const AddShippModal = ({ idship }) => {
           >
             PRE-Shipment Process
           </StepLabel>
-          <StepContent>seconde Shipp </StepContent>
+          <StepContent>
+            <SecondStepModal />
+          </StepContent>
         </Step>
         <Step>
           <StepLabel
@@ -89,7 +122,9 @@ const AddShippModal = ({ idship }) => {
           >
             Shipment Process
           </StepLabel>
-          <StepContent>Third Step</StepContent>
+          <StepContent>
+            <ThirdStepModal />
+          </StepContent>
         </Step>
       </Stepper>
 
