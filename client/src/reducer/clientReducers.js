@@ -8,6 +8,9 @@ import {
   LOGIN_CLIENT_REQUEST,
   LOGIN_CLIENT_SUCCESS,
   LOGIN_CLIENT_FAIL,
+  MY_SHIPS_REQUEST,
+  MY_SHIPS_SUCCESS,
+  MY_SHIPS_FAIL,
 } from '../constants/clientConstants'
 
 export const clientCreateReducer = (state = {}, action) => {
@@ -46,6 +49,20 @@ export const loginClientReducer = (state = {}, action) => {
       return { loading: false, clientinfo: action.payload }
     case LOGIN_CLIENT_FAIL:
       return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+export const myshipsReducer = (state = {}, action) => {
+  switch (action.type) {
+    case MY_SHIPS_REQUEST:
+      return { loading: true }
+    case MY_SHIPS_SUCCESS:
+      return { loading: false, success: true, myships: action.payload }
+    case MY_SHIPS_FAIL:
+      return { loading: false, error: action.payload }
+
     default:
       return state
   }
