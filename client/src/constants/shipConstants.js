@@ -9,3 +9,7 @@ export const All_SHIP_REQUEST = 'All_SHIP_REQUEST'
 export const NBR_SHIP_FAIL = 'NBR_SHIP_FAIL'
 export const NBR_SHIP_SUCCESS = 'NBR_SHIP_SUCCESS'
 export const NBR_SHIP_REQUEST = 'NBR_SHIP_REQUEST'
+
+export const GET_SHIP_FAIL = 'GET_SHIP_FAIL'
+export const GET_SHIP_SUCCESS = 'GET_SHIP_SUCCESS'
+export const GET_SHIP_REQUEST = 'GET_SHIP_REQUEST'

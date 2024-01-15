@@ -8,6 +8,9 @@ import {
   NBR_SHIP_REQUEST,
   NBR_SHIP_SUCCESS,
   NBR_SHIP_FAIL,
+  GET_SHIP_REQUEST,
+  GET_SHIP_SUCCESS,
+  GET_SHIP_FAIL,
 } from '../constants/shipConstants'
 
 //create sheep
@@ -40,7 +43,7 @@ export const shipListReducer = (state = {}, action) => {
   }
 }
 
-//nbr of sheep
+//nbrs of sheep
 export const shipNbrReducer = (state = {}, action) => {
   switch (action.type) {
     case NBR_SHIP_REQUEST:
@@ -48,6 +51,21 @@ export const shipNbrReducer = (state = {}, action) => {
     case NBR_SHIP_SUCCESS:
       return { loading: false, nbrships: action.payload }
     case NBR_SHIP_FAIL:
+      return { loading: false, error: action.payload }
+
+    default:
+      return state
+  }
+}
+
+//get ship by id
+export const shipbyidReducer = (state = {}, action) => {
+  switch (action.type) {
+    case GET_SHIP_REQUEST:
+      return { loading: true }
+    case GET_SHIP_SUCCESS:
+      return { loading: false, ...action.payload }
+    case GET_SHIP_FAIL:
       return { loading: false, error: action.payload }
 
     default:

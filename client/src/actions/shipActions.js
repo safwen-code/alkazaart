@@ -8,6 +8,9 @@ import {
   NBR_SHIP_REQUEST,
   NBR_SHIP_SUCCESS,
   NBR_SHIP_FAIL,
+  GET_SHIP_REQUEST,
+  GET_SHIP_SUCCESS,
+  GET_SHIP_FAIL,
 } from '../constants/shipConstants'
 
 import axios from 'axios'
@@ -78,7 +81,7 @@ export const shipListAction = () => async (dispatch, getState) => {
   }
 }
 
-//get all ship
+//get all ship number
 export const shipNbrAction = () => async (dispatch, getState) => {
   try {
     dispatch({
@@ -100,6 +103,36 @@ export const shipNbrAction = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: NBR_SHIP_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+//get ship by id
+export const getshipAction = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: GET_SHIP_REQUEST,
+    })
+    const {
+      userLogin: { userinfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `bearer ${userinfo.token}`,
+      },
+    }
+
+    const { data } = await axios.get(`/api/ship/getship/${id}`, config)
+    dispatch({ type: GET_SHIP_SUCCESS, payload: data })
+  } catch (error) {
+    dispatch({
+      type: GET_SHIP_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
