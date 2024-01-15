@@ -16,14 +16,19 @@ import ListCardSheep from './ListCardSheep.jsx'
 
 import { shipListAction } from '../../actions/shipActions.js'
 import Alerts from '../../layout/Alerts.jsx'
+import ModalShip from './ModalShip.jsx'
 
 const ListShip = () => {
   const dispatch = useDispatch()
+
   const userLogin = useSelector((state) => state.userLogin)
   const { userinfo } = userLogin
   const alertThing = useSelector((state) => state.alertThing)
   const { alert } = alertThing
+
   const navigate = useNavigate()
+
+  //display list shipp
   useEffect(() => {
     if (userinfo && userinfo.isAdmin) {
       dispatch(shipListAction())
@@ -32,7 +37,7 @@ const ListShip = () => {
     }
   }, [navigate, dispatch, userinfo])
 
-  //get list sheep
+  //get list sheep from redux
   const shipList = useSelector((state) => state.shipList)
 
   const [collapsed, setCollapsed] = useState(true)
@@ -64,9 +69,15 @@ const ListShip = () => {
   //use theme for margin top (responsive thing)
   const theme = useTheme()
 
+  //traitement of modal ship
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const openModal = () => setIsModalOpen(true)
+  const closeModal = () => setIsModalOpen(false)
+
   //create button in cell render
   const renderGridCell = (data) => {
-    const { value, data: rowData } = data
+    const { data: rowData } = data
 
     // Check if 'secondstep' and 'thridstep' exists and is not null or undefined
     const isSecondStepExist =
@@ -93,11 +104,7 @@ const ListShip = () => {
             variant="outlined"
             color="secondary"
             size="small"
-            onClick={() => {
-              // Add logic for adding a new row
-              console.log('Add button clicked!')
-              console.log(data)
-            }}
+            onClick={() => openModal()}
           >
             Complete shippment process
           </Button>
@@ -105,8 +112,16 @@ const ListShip = () => {
       </div>
     )
   }
+
   return (
     <>
+      {isModalOpen && (
+        <ModalShip
+          handleClose={closeModal}
+          handleOpen={openModal}
+          open={isModalOpen}
+        />
+      )}{' '}
       {<ListCardSheep userLogin={userLogin} />}
       <Grid m={4}>
         <Chip
@@ -130,17 +145,12 @@ const ListShip = () => {
         keyExpr="_id"
         onContentReady={onContentReady}
         onRowPrepared={getRowStyle}
-        editing={{
-          mode: 'cell',
-          allowUpdating: (options) => {
-            const rowData = options.data
-          },
-        }}
       >
         <Grouping autoExpandAll={false} />
 
         <Column
           dataField="fornisseuremail"
+          caption="Client Email"
           allowUpdating={true}
           cellRender={renderGridCell}
         ></Column>
