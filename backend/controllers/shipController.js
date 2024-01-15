@@ -81,4 +81,17 @@ const countSheep = asyncHandler(async (req, res) => {
   }
 })
 
-export { createShip, getAllShip, countSheep }
+//get ship by id
+const getShipById = asyncHandler(async (req, res) => {
+  try {
+    const idship = req.params.id
+    const ship = await Ship.findById({ _id: idship })
+    if (ship) {
+      res.status(200).json(ship)
+    }
+  } catch (error) {
+    throw new Error(error)
+  }
+})
+
+export { createShip, getAllShip, countSheep, getShipById }
