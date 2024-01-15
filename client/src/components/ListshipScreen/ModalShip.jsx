@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button, Modal, Box, Typography } from '@mui/material'
+import AddShipp from './AddShipp'
 
 const style = {
   position: 'absolute',
@@ -7,6 +8,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
+  height: 600,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -24,12 +26,7 @@ const ModalShip = ({ handleOpen, open, handleClose }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <AddShipp />
         </Box>
       </Modal>
     </div>

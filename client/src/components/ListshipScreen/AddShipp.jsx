@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React from 'react'
 import {
   Paper,
   Box,
@@ -11,75 +11,8 @@ import {
   Grid,
   StepIcon,
 } from '@mui/material'
-import { SelectBox } from 'devextreme-react/select-box'
 
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-
-import ThirdStep from '../ShippProcess/ThirdStep'
-import FirstShipp from '../ShippProcess/FirstShipp'
-import SecondStep from '../ShippProcess/SecondStep'
-
-import { shipCreateAction } from '../../actions/shipActions'
-import { clientListAction } from '../../actions/clientAction'
-
-const AddShipp = ({ setActiveNavItem }) => {
-  const userLogin = useSelector((state) => state.userLogin)
-  const { userinfo } = userLogin
-
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(clientListAction())
-  }, [dispatch])
-  //get all fornisseur
-  const clientList = useSelector((state) => state.clientList)
-  const { clients } = clientList
-
-  //id fornisseur state
-  const [idClient, setidClient] = useState('')
-  //get id Client
-  const onValueChanged = useCallback((e) => {
-    setidClient(e.value)
-  }, [])
-
-  //steps work
-  const [activeStep, setActiveStep] = useState(0)
-  const [shipdata, setshipdata] = useState({
-    firststep: null,
-    secondstep: null,
-    thirdstep: null,
-  })
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1)
-  }
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1)
-  }
-  //end steps work
-
-  if (shipdata) {
-    console.log(shipdata)
-  }
-  const handleReset = () => {
-    setActiveStep(0)
-  }
-
-  const navigate = useNavigate()
-  //add shippemnt
-  const addship = () => {
-    if (userinfo.isAdmin) {
-      dispatch(shipCreateAction(idClient, shipdata))
-        .then(() => {
-          navigate('/dashadmin/listship')
-          setActiveNavItem('/dashadmin/listship')
-        })
-        .catch((error) => {
-          console.error('Error creating fornisseur:', error)
-        })
-    }
-  }
-
+const AddShipp = () => {
   return (
     <Box
       sx={{
@@ -97,18 +30,9 @@ const AddShipp = ({ setActiveNavItem }) => {
         }}
         m={2}
         p={1}
-      >
-        <SelectBox
-          dataSource={clients}
-          displayExpr="name"
-          valueExpr="_id"
-          searchEnabled={true}
-          onValueChanged={onValueChanged}
-        />
-      </Grid>
+      ></Grid>
 
       <Stepper
-        activeStep={activeStep}
         orientation="vertical"
         sx={{
           display: 'flex',
@@ -126,17 +50,7 @@ const AddShipp = ({ setActiveNavItem }) => {
           >
             Shipment Détails
           </StepLabel>
-          <StepContent>
-            <FirstShipp
-              handleBack={handleBack}
-              handleNext={handleNext}
-              shipdata={shipdata}
-              setshipdata={setshipdata}
-              idClient={idClient}
-              shipCreateAction={shipCreateAction}
-              setActiveNavItem={setActiveNavItem}
-            />
-          </StepContent>
+          <StepContent>first step</StepContent>
         </Step>
         <Step>
           <StepLabel
@@ -147,17 +61,7 @@ const AddShipp = ({ setActiveNavItem }) => {
           >
             PRE-Shipment Process
           </StepLabel>
-          <StepContent>
-            <SecondStep
-              handleBack={handleBack}
-              handleNext={handleNext}
-              shipdata={shipdata}
-              setshipdata={setshipdata}
-              idClient={idClient}
-              shipCreateAction={shipCreateAction}
-              setActiveNavItem={setActiveNavItem}
-            />
-          </StepContent>
+          <StepContent>second step</StepContent>
         </Step>
         <Step>
           <StepLabel
@@ -168,50 +72,32 @@ const AddShipp = ({ setActiveNavItem }) => {
           >
             Shipment Process
           </StepLabel>
-          <StepContent>
-            <ThirdStep
-              handleBack={handleBack}
-              handleNext={handleNext}
-              shipdata={shipdata}
-              setshipdata={setshipdata}
-              idClient={idClient}
-              shipCreateAction={shipCreateAction}
-              setActiveNavItem={setActiveNavItem}
-            />
-          </StepContent>
+          <StepContent>third step</StepContent>
         </Step>
       </Stepper>
 
-      {activeStep === 3 && (
-        <Paper
-          square
-          elevation={0}
-          sx={{
-            p: 3,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Button
-            onClick={addship}
-            variant="outlined"
-            color="error"
-            sx={{ mt: 1, mr: 1, ml: 4 }}
-          >
-            Confirm Ship
-          </Button>
+      <Paper
+        square
+        elevation={0}
+        sx={{
+          p: 3,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Button variant="outlined" color="error" sx={{ mt: 1, mr: 1, ml: 4 }}>
+          Confirm Ship
+        </Button>
 
-          <Button
-            onClick={handleReset}
-            variant="outlined"
-            color="secondary"
-            sx={{ mt: 1, mr: 1, ml: 4 }}
-          >
-            Reset
-          </Button>
-        </Paper>
-      )}
+        <Button
+          variant="outlined"
+          color="secondary"
+          sx={{ mt: 1, mr: 1, ml: 4 }}
+        >
+          Reset
+        </Button>
+      </Paper>
     </Box>
   )
 }
