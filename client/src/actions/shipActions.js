@@ -16,6 +16,7 @@ import {
   ADD_SHIP_FIRSTSTEP_SUCCESS,
   ADD_SHIP_SECONDSTEP_REQUEST,
   ADD_SHIP_SECONDSTEP_FAIL,
+  ADD_SHIP_SECONDSTEP_SUCCESS,
 } from '../constants/shipConstants'
 
 import axios from 'axios'
@@ -208,7 +209,7 @@ export const secondshipAction = (id, datatosend) => async (
       { id, datatosend },
       config,
     )
-    dispatch({ type: ADD_SHIP_SECONDSTEP_REQUEST, payload: data })
+    dispatch({ type: ADD_SHIP_SECONDSTEP_SUCCESS, payload: data })
   } catch (error) {
     dispatch({
       type: ADD_SHIP_SECONDSTEP_FAIL,

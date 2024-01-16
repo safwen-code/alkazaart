@@ -67,7 +67,10 @@ const MasterDetailGrid = ({ data }) => {
           )}
           {secondstep && (
             <div>
-              <h5>Second Step </h5>
+              <h5>Second Step </h5>{' '}
+              {secondstep.createdby && (
+                <h5>CreatedBy {secondstep.createdby}</h5>
+              )}
               <DataGrid
                 dataSource={[secondstep]}
                 showBorders={true}

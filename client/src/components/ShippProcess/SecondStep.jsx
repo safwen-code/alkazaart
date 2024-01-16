@@ -84,13 +84,13 @@ const SecondStep = ({
     // console.log(datatosend)
 
     dispatch(secondshipAction(idClient, datatosend))
-    // .then(() => {
-    //   navigate('/dashadmin/listship')
-    //   setActiveNavItem('/dashadmin/listship')
-    // })
-    // .catch((error) => {
-    //   console.error('Error creating fornisseur:', error)
-    // })
+      .then(() => {
+        navigate('/dashadmin/listship')
+        setActiveNavItem('/dashadmin/listship')
+      })
+      .catch((error) => {
+        console.error('Error creating fornisseur:', error)
+      })
   }
 
   return (
