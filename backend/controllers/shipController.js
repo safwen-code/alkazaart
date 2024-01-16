@@ -101,16 +101,18 @@ const addfirststep = asyncHandler(async (req, res) => {
   const fornisseurdata = await Fornisseur.findById({ _id: id })
   let { name, email, createdAt } = fornisseurdata
 
+  let { firststep } = req.body.firststep
+
   //create product
   const ship = new Ship({
     fornisseur: id,
     fornisseurname: name,
     fornisseuremail: email,
     fournisseurcreated: createdAt,
-    firststep: req.body.firststep,
-    // createdby: req.user.name,
+    firststep,
   })
 
+  // console.log(ship)
   const createdShip = await ship.save()
   res.status(201).json(createdShip)
 })

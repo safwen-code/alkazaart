@@ -24,6 +24,7 @@ import { shipCreateAction } from '../../actions/shipActions'
 import { clientListAction } from '../../actions/clientAction'
 
 const AddShipp = ({ setActiveNavItem }) => {
+  //get the login user
   const userLogin = useSelector((state) => state.userLogin)
   const { userinfo } = userLogin
 
@@ -133,8 +134,9 @@ const AddShipp = ({ setActiveNavItem }) => {
               shipdata={shipdata}
               setshipdata={setshipdata}
               idClient={idClient}
-              shipCreateAction={shipCreateAction}
+              // shipCreateAction={shipCreateAction}
               setActiveNavItem={setActiveNavItem}
+              userinfo={userinfo}
             />
           </StepContent>
         </Step>
@@ -149,13 +151,13 @@ const AddShipp = ({ setActiveNavItem }) => {
           </StepLabel>
           <StepContent>
             <SecondStep
-              handleBack={handleBack}
-              handleNext={handleNext}
-              shipdata={shipdata}
-              setshipdata={setshipdata}
-              idClient={idClient}
-              shipCreateAction={shipCreateAction}
-              setActiveNavItem={setActiveNavItem}
+            // handleBack={handleBack}
+            // handleNext={handleNext}
+            // shipdata={shipdata}
+            // setshipdata={setshipdata}
+            // idClient={idClient}
+            // shipCreateAction={shipCreateAction}
+            // setActiveNavItem={setActiveNavItem}
             />
           </StepContent>
         </Step>
@@ -170,13 +172,13 @@ const AddShipp = ({ setActiveNavItem }) => {
           </StepLabel>
           <StepContent>
             <ThirdStep
-              handleBack={handleBack}
-              handleNext={handleNext}
-              shipdata={shipdata}
-              setshipdata={setshipdata}
-              idClient={idClient}
-              shipCreateAction={shipCreateAction}
-              setActiveNavItem={setActiveNavItem}
+            // handleBack={handleBack}
+            // handleNext={handleNext}
+            // shipdata={shipdata}
+            // setshipdata={setshipdata}
+            // idClient={idClient}
+            // shipCreateAction={shipCreateAction}
+            // setActiveNavItem={setActiveNavItem}
             />
           </StepContent>
         </Step>

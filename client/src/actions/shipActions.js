@@ -145,7 +145,7 @@ export const getshipAction = (id) => async (dispatch, getState) => {
 }
 
 //create ship firststep
-export const firstshipAction = (id, firstship) => async (
+export const firstshipAction = (id, firststep) => async (
   dispatch,
   getState,
 ) => {
@@ -166,7 +166,7 @@ export const firstshipAction = (id, firstship) => async (
 
     const { data } = await axios.post(
       `/api/ship/addfirststep`,
-      { firstship, id },
+      { id, firststep },
       config,
     )
     dispatch({ type: ADD_SHIP_FIRSTSTEP_SUCCESS, payload: data })

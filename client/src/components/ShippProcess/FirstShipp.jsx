@@ -11,12 +11,14 @@ import {
 } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { firstshipAction } from '../../actions/shipActions'
 
 const FirstShipp = ({
   handleNext,
   setshipdata,
   idClient,
-  shipCreateAction,
+  userinfo,
+  // shipCreateAction,
   setActiveNavItem,
 }) => {
   const [trackingnumber, settrackingnumber] = useState('')
@@ -66,6 +68,7 @@ const FirstShipp = ({
         packages,
         weight,
         deliveryterms,
+        createdby: userinfo.email,
       },
     })
   }
@@ -81,6 +84,7 @@ const FirstShipp = ({
     packages,
     weight,
     deliveryterms,
+    createdby: userinfo.email,
   }
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -88,8 +92,8 @@ const FirstShipp = ({
   const testQuit = () => {
     // console.log(firststep)
     // console.log(idClient)
-
-    dispatch(shipCreateAction(idClient, { firststep }))
+    //new work
+    dispatch(firstshipAction(idClient, { firststep }))
       .then(() => {
         navigate('/dashadmin/listship')
         setActiveNavItem('/dashadmin/listship')
@@ -97,7 +101,6 @@ const FirstShipp = ({
       .catch((error) => {
         console.error('Error creating fornisseur:', error)
       })
-    //work to :: send data /ship/adddata
   }
 
   return (
