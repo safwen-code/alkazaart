@@ -39,7 +39,8 @@ const MasterDetailGrid = ({ data }) => {
         <div>
           {firststep && (
             <div>
-              <h5>First Step</h5>
+              <h5>First Step</h5>{' '}
+              {firststep.createdby && <h5>CreatedBy {firststep.createdby}</h5>}
               <DataGrid
                 dataSource={[firststep]}
                 showBorders={true}
