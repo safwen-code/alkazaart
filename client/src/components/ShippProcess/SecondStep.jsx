@@ -17,8 +17,8 @@ const SecondStep = ({
   handleBack,
   setshipdata,
   idClient,
-  shipCreateAction,
   setActiveNavItem,
+  userinfo,
 }) => {
   const [date, setdate] = useState('')
   const [orderstatus, setorderstatus] = useState('')
@@ -57,6 +57,7 @@ const SecondStep = ({
         etdIstanbul,
         CMR,
         trailer,
+        createdby: userinfo.email,
       },
     })
   }
@@ -71,6 +72,7 @@ const SecondStep = ({
     etdIstanbul,
     CMR,
     trailer,
+    createdby: userinfo.email,
   }
   let datatosend = { ...shipdata, secondstep }
   const dispatch = useDispatch()
@@ -80,14 +82,15 @@ const SecondStep = ({
     //work to :: send data /ship/adddata
     // console.log(datatosend)
 
-    dispatch(shipCreateAction(idClient, datatosend))
-      .then(() => {
-        navigate('/dashadmin/listship')
-        setActiveNavItem('/dashadmin/listship')
-      })
-      .catch((error) => {
-        console.error('Error creating fornisseur:', error)
-      })
+    // dispatch(shipCreateAction(idClient, datatosend))
+    //   .then(() => {
+    //     navigate('/dashadmin/listship')
+    //     setActiveNavItem('/dashadmin/listship')
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error creating fornisseur:', error)
+    //   })
+    console.log(datatosend, 'second step')
   }
 
   return (

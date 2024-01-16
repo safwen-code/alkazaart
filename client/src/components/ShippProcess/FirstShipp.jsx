@@ -18,7 +18,6 @@ const FirstShipp = ({
   setshipdata,
   idClient,
   userinfo,
-  // shipCreateAction,
   setActiveNavItem,
 }) => {
   const [trackingnumber, settrackingnumber] = useState('')

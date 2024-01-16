@@ -134,7 +134,6 @@ const AddShipp = ({ setActiveNavItem }) => {
               shipdata={shipdata}
               setshipdata={setshipdata}
               idClient={idClient}
-              // shipCreateAction={shipCreateAction}
               setActiveNavItem={setActiveNavItem}
               userinfo={userinfo}
             />
@@ -151,13 +150,13 @@ const AddShipp = ({ setActiveNavItem }) => {
           </StepLabel>
           <StepContent>
             <SecondStep
-            // handleBack={handleBack}
-            // handleNext={handleNext}
-            // shipdata={shipdata}
-            // setshipdata={setshipdata}
-            // idClient={idClient}
-            // shipCreateAction={shipCreateAction}
-            // setActiveNavItem={setActiveNavItem}
+              handleBack={handleBack}
+              handleNext={handleNext}
+              shipdata={shipdata}
+              setshipdata={setshipdata}
+              idClient={idClient}
+              setActiveNavItem={setActiveNavItem}
+              userinfo={userinfo}
             />
           </StepContent>
         </Step>

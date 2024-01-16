@@ -6,6 +6,7 @@ import {
   countSheep,
   getShipById,
   addfirststep,
+  addsecondstep,
 } from '../controllers/shipController.js'
 import { admin, protect } from '../middelware/authMiddleware.js'
 
@@ -15,5 +16,5 @@ router.route('/nbrship').get(protect, admin, countSheep)
 router.route('/getship/:id').get(protect, admin, getShipById)
 
 router.route('/addfirststep').post(protect, admin, addfirststep)
-
+router.route('/addsecondstep').post(protect, admin, addsecondstep)
 export default router

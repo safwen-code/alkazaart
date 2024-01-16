@@ -117,4 +117,35 @@ const addfirststep = asyncHandler(async (req, res) => {
   res.status(201).json(createdShip)
 })
 
-export { createShip, getAllShip, countSheep, getShipById, addfirststep }
+//add the Second step
+const addsecondstep = asyncHandler(async (req, res) => {
+  //get fornisseur by his Id
+  const id = req.body.id
+  const fornisseurdata = await Fornisseur.findById({ _id: id })
+  let { name, email, createdAt } = fornisseurdata
+
+  let { firststep } = req.body.firststep
+  let { secondstep } = req.body.secondstep
+  //create product
+  const ship = new Ship({
+    fornisseur: id,
+    fornisseurname: name,
+    fornisseuremail: email,
+    fournisseurcreated: createdAt,
+    firststep,
+    secondstep,
+  })
+
+  // console.log(ship)
+  const createdShip = await ship.save()
+  res.status(201).json(createdShip)
+})
+
+export {
+  createShip,
+  getAllShip,
+  countSheep,
+  getShipById,
+  addfirststep,
+  addsecondstep,
+}
