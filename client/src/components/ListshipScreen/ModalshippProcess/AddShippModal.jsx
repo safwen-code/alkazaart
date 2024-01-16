@@ -50,6 +50,7 @@ const AddShippModal = ({ idship }) => {
     }
   }, [shipbyidReducer, isFirstStepExist, isSecondStepExist, isthirdStepExist])
 
+  const { fornisseuremail, fornisseur } = shipbyidReducer
   return (
     <Box
       sx={{
@@ -69,10 +70,24 @@ const AddShippModal = ({ idship }) => {
         p={1}
       >
         <SelectBox
-          //   dataSource={clients}
-          displayExpr="name"
-          valueExpr="_id"
+          dataSource={[
+            {
+              fornisseurname: shipbyidReducer.fornisseurname,
+              fournisseur: shipbyidReducer.fournisseur,
+              fornisseuremail: shipbyidReducer.fornisseuremail,
+            },
+          ]}
+          displayExpr="fornisseurname"
+          valueExpr="fournisseur"
           searchEnabled={true}
+          readOnly={true}
+          defaultValue={[
+            {
+              fornisseurname: shipbyidReducer.fornisseurname,
+              fournisseur: shipbyidReducer.fournisseur,
+              fornisseuremail: shipbyidReducer.fornisseuremail,
+            },
+          ]}
         />
       </Grid>
 
