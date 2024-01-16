@@ -4,7 +4,7 @@ import Fornisseur from '../models/fornisseurModel.js'
 
 //add sheep
 const createShip = asyncHandler(async (req, res) => {
-  console.log(req.user)
+  // console.log(req.user)
 
   //get fornisseur by his Id
   const id = req.body.id
@@ -96,7 +96,23 @@ const getShipById = asyncHandler(async (req, res) => {
 
 //add the first step
 const addfirststep = asyncHandler(async (req, res) => {
-  console.log(req.user)
+  //get fornisseur by his Id
+  const id = req.body.id
+  const fornisseurdata = await Fornisseur.findById({ _id: id })
+  let { name, email, createdAt } = fornisseurdata
+
+  //create product
+  const ship = new Ship({
+    fornisseur: id,
+    fornisseurname: name,
+    fornisseuremail: email,
+    fournisseurcreated: createdAt,
+    firststep: req.body.firststep,
+    // createdby: req.user.name,
+  })
+
+  const createdShip = await ship.save()
+  res.status(201).json(createdShip)
 })
 
 export { createShip, getAllShip, countSheep, getShipById, addfirststep }

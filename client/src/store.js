@@ -8,6 +8,7 @@ import {
   shipListReducer,
   shipNbrReducer,
   shipbyidReducer,
+  addShippFirststepReducer,
 } from './reducer/shipReducers'
 import {
   clientCreateReducer,
@@ -30,6 +31,7 @@ const reducer = combineReducers({
   shipList: shipListReducer,
   shipNbr: shipNbrReducer,
   shipbyidReducer,
+  addShipStep1: addShippFirststepReducer,
   clientCreate: clientCreateReducer,
   clientList: AllclientReducer,
   clientLogin: loginClientReducer,

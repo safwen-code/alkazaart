@@ -11,6 +11,9 @@ import {
   GET_SHIP_REQUEST,
   GET_SHIP_SUCCESS,
   GET_SHIP_FAIL,
+  ADD_SHIP_FIRSTSTEP_FAIL,
+  ADD_SHIP_FIRSTSTEP_SUCCESS,
+  ADD_SHIP_FIRSTSTEP_REQUEST,
 } from '../constants/shipConstants'
 
 //create sheep
@@ -66,6 +69,21 @@ export const shipbyidReducer = (state = {}, action) => {
     case GET_SHIP_SUCCESS:
       return { loading: false, ...action.payload }
     case GET_SHIP_FAIL:
+      return { loading: false, error: action.payload }
+
+    default:
+      return state
+  }
+}
+
+// add ship first step
+export const addShippFirststepReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ADD_SHIP_FIRSTSTEP_REQUEST:
+      return { loading: true }
+    case ADD_SHIP_FIRSTSTEP_SUCCESS:
+      return { loading: false, success: true, shipfirststep: action.payload }
+    case ADD_SHIP_FIRSTSTEP_FAIL:
       return { loading: false, error: action.payload }
 
     default:

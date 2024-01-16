@@ -11,6 +11,9 @@ import {
   GET_SHIP_REQUEST,
   GET_SHIP_SUCCESS,
   GET_SHIP_FAIL,
+  ADD_SHIP_FIRSTSTEP_FAIL,
+  ADD_SHIP_FIRSTSTEP_REQUEST,
+  ADD_SHIP_FIRSTSTEP_SUCCESS,
 } from '../constants/shipConstants'
 
 import axios from 'axios'
@@ -133,6 +136,43 @@ export const getshipAction = (id) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: GET_SHIP_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+//create ship firststep
+export const firstshipAction = (id, firstship) => async (
+  dispatch,
+  getState,
+) => {
+  try {
+    dispatch({
+      type: ADD_SHIP_FIRSTSTEP_REQUEST,
+    })
+    const {
+      userLogin: { userinfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `bearer ${userinfo.token}`,
+      },
+    }
+
+    const { data } = await axios.post(
+      `/api/ship/addfirststep`,
+      { firstship, id },
+      config,
+    )
+    dispatch({ type: ADD_SHIP_FIRSTSTEP_SUCCESS, payload: data })
+  } catch (error) {
+    dispatch({
+      type: ADD_SHIP_FIRSTSTEP_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
