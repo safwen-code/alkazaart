@@ -11,6 +11,7 @@ const ThirdStep = ({
   idClient,
   shipCreateAction,
   setActiveNavItem,
+  userinfo,
 }) => {
   const [etaSete, setetaSete] = useState('')
   const [etdMarseille, setetdMarseille] = useState('')
@@ -30,6 +31,7 @@ const ThirdStep = ({
         etdAtvyl,
         customeredd,
         comment,
+        createdby: userinfo.email,
       },
     })
   }
@@ -40,6 +42,7 @@ const ThirdStep = ({
     etdAtvyl,
     customeredd,
     comment,
+    createdby: userinfo.email,
   }
   let datatosend = { ...shipdata, thirdstep }
   const dispatch = useDispatch()

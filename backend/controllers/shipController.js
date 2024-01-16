@@ -2,33 +2,7 @@ import Ship from '../models/shipModel.js'
 import asyncHandler from 'express-async-handler'
 import Fornisseur from '../models/fornisseurModel.js'
 
-//add sheep
-const createShip = asyncHandler(async (req, res) => {
-  // console.log(req.user)
-
-  //get fornisseur by his Id
-  const id = req.body.id
-  const fornisseurdata = await Fornisseur.findById({ _id: id })
-  let { name, email, createdAt } = fornisseurdata
-
-  //create product
-  const ship = new Ship({
-    fornisseur: id,
-    fornisseurname: name,
-    fornisseuremail: email,
-    fournisseurcreated: createdAt,
-    firststep: req.body.firststep,
-    secondstep: req.body.secondstep,
-    thirdstep: req.body.thirdstep,
-    createdby: req.user.name,
-  })
-
-  const createdShip = await ship.save()
-  res.status(201).json(createdShip)
-})
-
 //get allShip
-//to do
 const getAllShip = asyncHandler(async (req, res) => {
   const ships = await Ship.find({})
   if (ships) {
@@ -137,6 +111,30 @@ const addsecondstep = asyncHandler(async (req, res) => {
   })
 
   console.log(ship)
+  const createdShip = await ship.save()
+  res.status(201).json(createdShip)
+})
+
+//add sheep
+const createShip = asyncHandler(async (req, res) => {
+  // console.log(req.user)
+
+  //get fornisseur by his Id
+  const id = req.body.id
+  const fornisseurdata = await Fornisseur.findById({ _id: id })
+  let { name, email, createdAt } = fornisseurdata
+
+  const { firststep, secondstep, thirdstep } = req.body.datatosend
+  //create product
+  const ship = new Ship({
+    fornisseur: id,
+    fornisseurname: name,
+    fornisseuremail: email,
+    fournisseurcreated: createdAt,
+    firststep,
+    secondstep,
+    thirdstep,
+  })
   const createdShip = await ship.save()
   res.status(201).json(createdShip)
 })

@@ -69,6 +69,7 @@ const AddShipp = ({ setActiveNavItem }) => {
   const navigate = useNavigate()
   //add shippemnt
   const addship = () => {
+    console.log(shipdata, 'add shipp')
     if (userinfo.isAdmin) {
       dispatch(shipCreateAction(idClient, shipdata))
         .then(() => {
@@ -171,13 +172,14 @@ const AddShipp = ({ setActiveNavItem }) => {
           </StepLabel>
           <StepContent>
             <ThirdStep
-            // handleBack={handleBack}
-            // handleNext={handleNext}
-            // shipdata={shipdata}
-            // setshipdata={setshipdata}
-            // idClient={idClient}
-            // shipCreateAction={shipCreateAction}
-            // setActiveNavItem={setActiveNavItem}
+              handleBack={handleBack}
+              handleNext={handleNext}
+              shipdata={shipdata}
+              setshipdata={setshipdata}
+              idClient={idClient}
+              userinfo={userinfo}
+              shipCreateAction={shipCreateAction}
+              setActiveNavItem={setActiveNavItem}
             />
           </StepContent>
         </Step>

@@ -22,7 +22,10 @@ import {
 import axios from 'axios'
 
 //create ship
-export const shipCreateAction = (id, ship) => async (dispatch, getState) => {
+export const shipCreateAction = (id, datatosend) => async (
+  dispatch,
+  getState,
+) => {
   //console.log(ship)
 
   try {
@@ -42,7 +45,7 @@ export const shipCreateAction = (id, ship) => async (dispatch, getState) => {
 
     const { data } = await axios.post(
       `/api/ship/createship`,
-      { ship, id },
+      { datatosend, id },
       config,
     )
     dispatch({ type: SHIP_CREATE_SUCCESS, payload: data })
