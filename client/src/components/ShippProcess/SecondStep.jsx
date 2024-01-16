@@ -10,6 +10,7 @@ import {
 } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { secondshipAction } from '../../actions/shipActions'
 
 const SecondStep = ({
   shipdata,
@@ -82,15 +83,14 @@ const SecondStep = ({
     //work to :: send data /ship/adddata
     // console.log(datatosend)
 
-    // dispatch(shipCreateAction(idClient, datatosend))
-    //   .then(() => {
-    //     navigate('/dashadmin/listship')
-    //     setActiveNavItem('/dashadmin/listship')
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error creating fornisseur:', error)
-    //   })
-    console.log(datatosend, 'second step')
+    dispatch(secondshipAction(idClient, datatosend))
+    // .then(() => {
+    //   navigate('/dashadmin/listship')
+    //   setActiveNavItem('/dashadmin/listship')
+    // })
+    // .catch((error) => {
+    //   console.error('Error creating fornisseur:', error)
+    // })
   }
 
   return (

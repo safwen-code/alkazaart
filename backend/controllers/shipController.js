@@ -124,8 +124,8 @@ const addsecondstep = asyncHandler(async (req, res) => {
   const fornisseurdata = await Fornisseur.findById({ _id: id })
   let { name, email, createdAt } = fornisseurdata
 
-  let { firststep } = req.body.firststep
-  let { secondstep } = req.body.secondstep
+  let { firststep, secondstep } = req.body.datatosend
+
   //create product
   const ship = new Ship({
     fornisseur: id,
@@ -136,7 +136,7 @@ const addsecondstep = asyncHandler(async (req, res) => {
     secondstep,
   })
 
-  // console.log(ship)
+  console.log(ship)
   const createdShip = await ship.save()
   res.status(201).json(createdShip)
 })
