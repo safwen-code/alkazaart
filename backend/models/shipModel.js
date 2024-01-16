@@ -52,6 +52,9 @@ const shipSchema = mongoose.Schema({
     deliveryterms: {
       type: String,
     },
+    createdby: {
+      type: String,
+    },
   },
   secondstep: {
     date: {
@@ -81,7 +84,11 @@ const shipSchema = mongoose.Schema({
     trailer: {
       type: Number,
     },
+    createdby: {
+      type: String,
+    },
   },
+
   thirdstep: {
     etaSete: {
       type: String,
@@ -101,9 +108,9 @@ const shipSchema = mongoose.Schema({
     comment: {
       type: String,
     },
-  },
-  createdby: {
-    type: String,
+    createdby: {
+      type: String,
+    },
   },
 })
 const Ship = mongoose.model('Ship', shipSchema)

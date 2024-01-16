@@ -94,4 +94,9 @@ const getShipById = asyncHandler(async (req, res) => {
   }
 })
 
-export { createShip, getAllShip, countSheep, getShipById }
+//add the first step
+const addfirststep = asyncHandler(async (req, res) => {
+  console.log(req.user)
+})
+
+export { createShip, getAllShip, countSheep, getShipById, addfirststep }

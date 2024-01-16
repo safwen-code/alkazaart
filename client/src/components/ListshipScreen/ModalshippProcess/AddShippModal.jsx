@@ -20,8 +20,6 @@ import { useState } from 'react'
 import ThirdStepModal from './ThirdStepModal'
 
 const AddShippModal = ({ idship }) => {
-  //   console.log('from addship', idship)
-
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getshipAction(idship))
@@ -29,7 +27,7 @@ const AddShippModal = ({ idship }) => {
 
   const shipbyidReducer = useSelector((state) => state.shipbyidReducer)
 
-  //stepthings
+  //check for the stepthings
   const [activeStep, setActiveStep] = useState(0)
   const isFirstStepExist =
     shipbyidReducer.firststep !== null &&
@@ -51,6 +49,7 @@ const AddShippModal = ({ idship }) => {
       setActiveStep(2)
     }
   }, [shipbyidReducer, isFirstStepExist, isSecondStepExist, isthirdStepExist])
+
   return (
     <Box
       sx={{
