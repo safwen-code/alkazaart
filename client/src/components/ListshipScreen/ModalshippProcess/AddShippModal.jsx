@@ -10,14 +10,19 @@ import {
   Button,
   Grid,
   StepIcon,
+  InputAdornment,
+  Input,
+  InputLabel,
+  FormControl,
 } from '@mui/material'
-import { SelectBox } from 'devextreme-react/select-box'
 import { getshipAction } from '../../../actions/shipActions'
 import { useDispatch, useSelector } from 'react-redux'
 import FirstShippModal from './FirstShippModal'
 import SecondStepModal from './SecondStepModal'
 import { useState } from 'react'
 import ThirdStepModal from './ThirdStepModal'
+
+import AccountCircle from '@mui/icons-material/AccountCircle'
 
 const AddShippModal = ({ idship }) => {
   const dispatch = useDispatch()
@@ -50,7 +55,7 @@ const AddShippModal = ({ idship }) => {
     }
   }, [shipbyidReducer, isFirstStepExist, isSecondStepExist, isthirdStepExist])
 
-  const { fornisseuremail, fornisseur } = shipbyidReducer
+  const { fornisseuremail, fornisseurname } = shipbyidReducer
   return (
     <Box
       sx={{
@@ -69,26 +74,21 @@ const AddShippModal = ({ idship }) => {
         m={2}
         p={1}
       >
-        <SelectBox
-          dataSource={[
-            {
-              fornisseurname: shipbyidReducer.fornisseurname,
-              fournisseur: shipbyidReducer.fournisseur,
-              fornisseuremail: shipbyidReducer.fornisseuremail,
-            },
-          ]}
-          displayExpr="fornisseurname"
-          valueExpr="fournisseur"
-          searchEnabled={true}
-          readOnly={true}
-          defaultValue={[
-            {
-              fornisseurname: shipbyidReducer.fornisseurname,
-              fournisseur: shipbyidReducer.fournisseur,
-              fornisseuremail: shipbyidReducer.fornisseuremail,
-            },
-          ]}
-        />
+        <FormControl variant="standard">
+          <InputLabel htmlFor="input-with-icon-adornment">
+            client shippment n
+          </InputLabel>
+          <Input
+            id="input-with-icon-adornment"
+            readOnly
+            value={fornisseuremail}
+            startAdornment={
+              <InputAdornment position="start">
+                <AccountCircle />
+              </InputAdornment>
+            }
+          />
+        </FormControl>
       </Grid>
 
       <Stepper
