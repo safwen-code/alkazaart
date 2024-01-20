@@ -14,10 +14,8 @@ import { useNavigate } from 'react-router-dom'
 const SecondStepModal = ({
   shipdata,
   handleNext,
-  handleBack,
   setshipdata,
   idClient,
-  shipCreateAction,
   setActiveNavItem,
 }) => {
   const [date, setdate] = useState('')
@@ -45,20 +43,20 @@ const SecondStepModal = ({
   const handelClick = () => {
     handleNext()
     //grab Data
-    setshipdata({
-      ...shipdata,
-      secondstep: {
-        date,
-        orderstatus,
-        scheduled,
-        pickedmars,
-        delevered,
-        pickelocation,
-        etdIstanbul,
-        CMR,
-        trailer,
-      },
-    })
+    // setshipdata({
+    //   ...shipdata,
+    //   secondstep: {
+    //     date,
+    //     orderstatus,
+    //     scheduled,
+    //     pickedmars,
+    //     delevered,
+    //     pickelocation,
+    //     etdIstanbul,
+    //     CMR,
+    //     trailer,
+    //   },
+    // })
   }
 
   const secondstep = {
@@ -80,14 +78,7 @@ const SecondStepModal = ({
     //work to :: send data /ship/adddata
     // console.log(datatosend)
 
-    dispatch(shipCreateAction(idClient, datatosend))
-      .then(() => {
-        navigate('/dashadmin/listship')
-        setActiveNavItem('/dashadmin/listship')
-      })
-      .catch((error) => {
-        console.error('Error creating fornisseur:', error)
-      })
+    console.log('quite second ship')
   }
 
   return (
@@ -241,9 +232,6 @@ const SecondStepModal = ({
           >
             {' '}
             Save and quit
-          </Button>
-          <Button onClick={handleBack} sx={{ mt: 1, mr: 1 }}>
-            Back
           </Button>
         </div>
       </Box>

@@ -86,18 +86,7 @@ const FirstShippModal = ({
   const navigate = useNavigate()
   //quite step
   const testQuit = () => {
-    // console.log(firststep)
-    // console.log(idClient)
-
-    dispatch(shipCreateAction(idClient, { firststep }))
-      .then(() => {
-        navigate('/dashadmin/listship')
-        setActiveNavItem('/dashadmin/listship')
-      })
-      .catch((error) => {
-        console.error('Error creating fornisseur:', error)
-      })
-    //work to :: send data /ship/adddata
+    console.log('quite first shipp')
   }
 
   return (

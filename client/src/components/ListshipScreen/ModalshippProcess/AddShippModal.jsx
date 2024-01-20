@@ -33,7 +33,6 @@ const AddShippModal = ({ idship }) => {
   const shipbyidReducer = useSelector((state) => state.shipbyidReducer)
 
   //check for the stepthings
-  const [activeStep, setActiveStep] = useState(0)
   const isFirstStepExist =
     shipbyidReducer.firststep !== null &&
     shipbyidReducer.firststep !== undefined
@@ -55,7 +54,29 @@ const AddShippModal = ({ idship }) => {
     }
   }, [shipbyidReducer, isFirstStepExist, isSecondStepExist, isthirdStepExist])
 
-  const { fornisseuremail, fornisseurname } = shipbyidReducer
+  const { fornisseuremail } = shipbyidReducer
+  //steps work
+  const [activeStep, setActiveStep] = useState(0)
+  const [shipdata, setshipdata] = useState({
+    firststep: null,
+    secondstep: null,
+    thirdstep: null,
+  })
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1)
+  }
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1)
+  }
+  //end steps work
+  const handleReset = () => {
+    setActiveStep(0)
+  }
+  //add shippemnt
+  const addship = () => {
+    console.log(shipdata, 'add shipp modal')
+  }
+
   return (
     <Box
       sx={{
@@ -111,7 +132,11 @@ const AddShippModal = ({ idship }) => {
             Shipment Détails
           </StepLabel>
           <StepContent>
-            <FirstShippModal />
+            <FirstShippModal
+              handleBack={handleBack}
+              handleNext={handleNext}
+              setActiveNavItem
+            />
           </StepContent>
         </Step>
         <Step>
@@ -124,7 +149,7 @@ const AddShippModal = ({ idship }) => {
             PRE-Shipment Process
           </StepLabel>
           <StepContent>
-            <SecondStepModal />
+            <SecondStepModal handleNext={handleNext} setActiveNavItem />
           </StepContent>
         </Step>
         <Step>
@@ -137,33 +162,15 @@ const AddShippModal = ({ idship }) => {
             Shipment Process
           </StepLabel>
           <StepContent>
-            <ThirdStepModal />
+            <ThirdStepModal
+              handleBack={handleBack}
+              handleNext={handleNext}
+              setActiveNavItem
+              activeStep
+            />
           </StepContent>
         </Step>
       </Stepper>
-
-      <Paper
-        square
-        elevation={0}
-        sx={{
-          p: 3,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Button variant="outlined" color="error" sx={{ mt: 1, mr: 1, ml: 4 }}>
-          Confirm Ship
-        </Button>
-
-        <Button
-          variant="outlined"
-          color="secondary"
-          sx={{ mt: 1, mr: 1, ml: 4 }}
-        >
-          Annuller
-        </Button>
-      </Paper>
     </Box>
   )
 }

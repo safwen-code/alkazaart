@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, TextField, Button } from '@mui/material'
+import { Box, TextField, Button, Paper } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -21,17 +21,17 @@ const ThirdStepModal = ({
 
   const handelClick = () => {
     handleNext()
-    setshipdata({
-      ...shipdata,
-      thirdstep: {
-        etaSete,
-        etdMarseille,
-        etaRades,
-        etdAtvyl,
-        customeredd,
-        comment,
-      },
-    })
+    // setshipdata({
+    //   ...shipdata,
+    //   thirdstep: {
+    //     etaSete,
+    //     etdMarseille,
+    //     etaRades,
+    //     etdAtvyl,
+    //     customeredd,
+    //     comment,
+    //   },
+    // })
   }
   const thirdstep = {
     etaSete,
@@ -45,16 +45,13 @@ const ThirdStepModal = ({
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const testQuit = () => {
+  const confirmShip = () => {
     //work to :: send data /ship/adddata
-    dispatch(shipCreateAction(idClient, datatosend))
-      .then(() => {
-        navigate('/dashadmin/listship')
-        setActiveNavItem('/dashadmin/listship')
-      })
-      .catch((error) => {
-        console.error('Error creating fornisseur:', error)
-      })
+    console.log('confirm ship')
+  }
+
+  const closeModal = () => {
+    console.log('close modal')
   }
 
   return (
@@ -122,30 +119,34 @@ const ThirdStepModal = ({
           />
         </div>
       </Box>
-      <Box sx={{ mb: 2 }}>
-        <div>
-          <Button
-            variant="outlined"
-            onClick={handelClick}
-            sx={{ mt: 1, mr: 1 }}
-            color="secondary"
-          >
-            Save & Continue
-          </Button>
-          <Button
-            variant="outlined"
-            color="error"
-            sx={{ mt: 1, mr: 1 }}
-            onClick={testQuit}
-          >
-            {' '}
-            Save and quit
-          </Button>
-          <Button onClick={handleBack} sx={{ mt: 1, mr: 1 }}>
-            Back
-          </Button>
-        </div>
-      </Box>
+      <Paper
+        square
+        elevation={0}
+        sx={{
+          p: 3,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Button
+          onClick={confirmShip}
+          variant="outlined"
+          color="error"
+          sx={{ mt: 1, mr: 1, ml: 4 }}
+        >
+          Confirm Ship
+        </Button>
+
+        <Button
+          onClick={closeModal}
+          variant="outlined"
+          color="secondary"
+          sx={{ mt: 1, mr: 1, ml: 4 }}
+        >
+          Annuller
+        </Button>
+      </Paper>
     </>
   )
 }
