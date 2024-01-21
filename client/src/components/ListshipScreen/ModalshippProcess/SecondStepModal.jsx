@@ -10,7 +10,7 @@ import {
 } from '@mui/material'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { secondshipAction } from '../../../actions/shipActions'
+import { updateShipModalAction } from '../../../actions/shipActions'
 
 const SecondStepModal = ({ handleNext, setshipdata }) => {
   const [date, setdate] = useState('')
@@ -67,12 +67,15 @@ const SecondStepModal = ({ handleNext, setshipdata }) => {
   const dispatch = useDispatch()
   const shipbyidReducer = useSelector((state) => state.shipbyidReducer)
   const { _id } = shipbyidReducer
+  let datatosend = {
+    secondstep: secondstep,
+  }
   //quite step
   const testQuit = () => {
-    dispatch()
+    dispatch(updateShipModalAction(_id, datatosend))
     //work to :: send data /ship/adddata ==>step2
-    console.log(secondstep)
-    console.log('quite second ship')
+    // console.log(secondstep)
+    // console.log('quite second ship')
   }
 
   return (

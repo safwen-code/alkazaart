@@ -17,6 +17,9 @@ import {
   ADD_SHIP_SECONDSTEP_REQUEST,
   ADD_SHIP_SECONDSTEP_FAIL,
   ADD_SHIP_SECONDSTEP_SUCCESS,
+  UPDATE_MODAL_SHIP_REQUEST,
+  UPDATE_MODAL_SHIP_SUCCESS,
+  UPDATE_MODAL_SHIP_FAIL,
 } from '../constants/shipConstants'
 
 import axios from 'axios'
@@ -231,7 +234,7 @@ export const updateShipModalAction = (id, datatosend) => async (
 ) => {
   try {
     dispatch({
-      type: ADD_SHIP_SECONDSTEP_REQUEST,
+      type: UPDATE_MODAL_SHIP_REQUEST,
     })
     const {
       userLogin: { userinfo },
@@ -249,10 +252,10 @@ export const updateShipModalAction = (id, datatosend) => async (
       { id, datatosend },
       config,
     )
-    dispatch({ type: ADD_SHIP_SECONDSTEP_SUCCESS, payload: data })
+    dispatch({ type: UPDATE_MODAL_SHIP_SUCCESS, payload: data.update })
   } catch (error) {
     dispatch({
-      type: ADD_SHIP_SECONDSTEP_FAIL,
+      type: UPDATE_MODAL_SHIP_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

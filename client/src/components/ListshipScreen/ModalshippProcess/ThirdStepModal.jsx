@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Box, TextField, Button, Paper } from '@mui/material'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateShipModalAction } from '../../../actions/shipActions'
 
 const ThirdStepModal = ({ shipdata }) => {
   const [etaSete, setetaSete] = useState('')
@@ -19,10 +21,14 @@ const ThirdStepModal = ({ shipdata }) => {
   }
   let datatosend = { ...shipdata, thirdstep }
 
+  const dispatch = useDispatch()
+  const shipbyidReducer = useSelector((state) => state.shipbyidReducer)
+  const { _id } = shipbyidReducer
   const confirmShip = () => {
-    console.log(datatosend)
+    dispatch(updateShipModalAction(_id, datatosend))
     //work to :: send data /ship/adddata
-    console.log('confirm ship')
+    // console.log(datatosend)
+    // console.log('confirm ship')
   }
 
   const closeModal = () => {

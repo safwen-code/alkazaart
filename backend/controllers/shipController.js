@@ -167,6 +167,7 @@ const updateCurrentShip = asyncHandler(async (req, res) => {
     )
 
     await update.save()
+    res.status(200).json({ update })
   }
 })
 
