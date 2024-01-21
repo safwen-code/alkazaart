@@ -10,6 +10,8 @@ import {
   shipbyidReducer,
   addShippFirststepReducer,
   addShippSecondstepReducer,
+  updateSecondStepReducer,
+  updateThirdStepReducer,
 } from './reducer/shipReducers'
 import {
   clientCreateReducer,
@@ -26,18 +28,25 @@ import {
 import { AlertReducer } from './reducer/AlertReducers'
 const reducer = combineReducers({
   alertThing: AlertReducer,
+  /******** */
   userLogin: loginReducer,
   userLogout: logoutReducer,
+  /**** */
   shipCreate: shipCreateReducer,
   shipList: shipListReducer,
   shipNbr: shipNbrReducer,
   shipbyidReducer,
   addShipStep1: addShippFirststepReducer,
   addShipStep2: addShippSecondstepReducer,
+  updateStep2: updateSecondStepReducer,
+  updateStep3: updateThirdStepReducer,
+
+  /**** */
   clientCreate: clientCreateReducer,
   clientList: AllclientReducer,
   clientLogin: loginClientReducer,
   clientShips: myshipsReducer,
+  /*** */
   utilisateurCreate: utilisateurReducer,
   utilisateurList: AllutilisateurReducer,
 })

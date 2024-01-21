@@ -17,6 +17,12 @@ import {
   ADD_SHIP_SECONDSTEP_REQUEST,
   ADD_SHIP_SECONDSTEP_SUCCESS,
   ADD_SHIP_SECONDSTEP_FAIL,
+  UPDATE_MODAL_SECONDSTEP_FAIL,
+  UPDATE_MODAL_SECONDSTEP_REQUEST,
+  UPDATE_MODAL_SECONDSTEP_SUCCESS,
+  UPDATE_MODAL_THIRDSTEP_REQUEST,
+  UPDATE_MODAL_THIRDSTEP_SUCCESS,
+  UPDATE_MODAL_THIRDSTEP_FAIL,
 } from '../constants/shipConstants'
 
 //create sheep
@@ -110,6 +116,30 @@ export const addShippSecondstepReducer = (state = {}, action) => {
 }
 
 //update seccond step Modal
-export const updateSecondStepReducer = (state = {}, action) => {}
+export const updateSecondStepReducer = (state = {}, action) => {
+  switch (action.type) {
+    case UPDATE_MODAL_SECONDSTEP_REQUEST:
+      return { loading: true }
+    case UPDATE_MODAL_SECONDSTEP_SUCCESS:
+      return { loading: false, success: true, shipsecondupdate: action.payload }
+    case UPDATE_MODAL_SECONDSTEP_FAIL:
+      return { loading: false, error: action.payload }
+
+    default:
+      return state
+  }
+}
 //update thirs step Modal
-export const updateThirdStepReducer = (state = {}, action) => {}
+export const updateThirdStepReducer = (state = {}, action) => {
+  switch (action.type) {
+    case UPDATE_MODAL_THIRDSTEP_REQUEST:
+      return { loading: true }
+    case UPDATE_MODAL_THIRDSTEP_SUCCESS:
+      return { loading: false, success: true, shipthirdupdate: action.payload }
+    case UPDATE_MODAL_THIRDSTEP_FAIL:
+      return { loading: false, error: action.payload }
+
+    default:
+      return state
+  }
+}
