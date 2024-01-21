@@ -12,9 +12,9 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 const SecondStepModal = ({
-  shipdata,
   handleNext,
   setshipdata,
+
   idClient,
   setActiveNavItem,
 }) => {
@@ -43,20 +43,19 @@ const SecondStepModal = ({
   const handelClick = () => {
     handleNext()
     //grab Data
-    // setshipdata({
-    //   ...shipdata,
-    //   secondstep: {
-    //     date,
-    //     orderstatus,
-    //     scheduled,
-    //     pickedmars,
-    //     delevered,
-    //     pickelocation,
-    //     etdIstanbul,
-    //     CMR,
-    //     trailer,
-    //   },
-    // })
+    setshipdata({
+      secondstep: {
+        date,
+        orderstatus,
+        scheduled,
+        pickedmars,
+        delevered,
+        pickelocation,
+        etdIstanbul,
+        CMR,
+        trailer,
+      },
+    })
   }
 
   const secondstep = {
@@ -70,14 +69,13 @@ const SecondStepModal = ({
     CMR,
     trailer,
   }
-  let datatosend = { ...shipdata, secondstep }
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
   //quite step
   const testQuit = () => {
-    //work to :: send data /ship/adddata
-    // console.log(datatosend)
-
+    //work to :: send data /ship/adddata ==>step2
+    console.log(secondstep)
     console.log('quite second ship')
   }
 

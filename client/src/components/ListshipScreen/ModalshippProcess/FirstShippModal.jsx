@@ -9,16 +9,8 @@ import {
   Select,
   MenuItem,
 } from '@mui/material'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 
-const FirstShippModal = ({
-  handleNext,
-  setshipdata,
-  idClient,
-  shipCreateAction,
-  setActiveNavItem,
-}) => {
+const FirstShippModal = ({ handleNext, setshipdata }) => {
   const [trackingnumber, settrackingnumber] = useState('')
   const [shipper, setshipper] = useState('')
   const [bookingdate, setbookingdate] = useState('')
@@ -68,25 +60,6 @@ const FirstShippModal = ({
         deliveryterms,
       },
     })
-  }
-
-  const firststep = {
-    trackingnumber,
-    shipper,
-    bookingdate,
-    coosignereference,
-    shipperInvoice,
-    incotern,
-    commodites,
-    packages,
-    weight,
-    deliveryterms,
-  }
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  //quite step
-  const testQuit = () => {
-    console.log('quite first shipp')
   }
 
   return (
@@ -243,12 +216,7 @@ const FirstShippModal = ({
           >
             Save & Continue
           </Button>
-          <Button
-            variant="outlined"
-            color="error"
-            sx={{ mt: 1, mr: 1 }}
-            onClick={testQuit}
-          >
+          <Button variant="outlined" color="error" sx={{ mt: 1, mr: 1 }}>
             {' '}
             Save and quit
           </Button>

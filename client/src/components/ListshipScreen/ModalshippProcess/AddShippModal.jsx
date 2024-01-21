@@ -54,14 +54,9 @@ const AddShippModal = ({ idship }) => {
     }
   }, [shipbyidReducer, isFirstStepExist, isSecondStepExist, isthirdStepExist])
 
-  const { fornisseuremail } = shipbyidReducer
   //steps work
   const [activeStep, setActiveStep] = useState(0)
-  const [shipdata, setshipdata] = useState({
-    firststep: null,
-    secondstep: null,
-    thirdstep: null,
-  })
+
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1)
   }
@@ -72,9 +67,19 @@ const AddShippModal = ({ idship }) => {
   const handleReset = () => {
     setActiveStep(0)
   }
+
+  let {
+    firststep,
+    fornisseuremail,
+    fornisseurname,
+    _id,
+    fornisseur,
+  } = shipbyidReducer
+
+  const [shipdata, setshipdata] = useState('')
   //add shippemnt
   const addship = () => {
-    console.log(shipdata, 'add shipp modal')
+    console.log('add shipp modal')
   }
 
   return (
@@ -149,7 +154,11 @@ const AddShippModal = ({ idship }) => {
             PRE-Shipment Process
           </StepLabel>
           <StepContent>
-            <SecondStepModal handleNext={handleNext} setActiveNavItem />
+            <SecondStepModal
+              handleNext={handleNext}
+              setActiveNavItem
+              setshipdata={setshipdata}
+            />
           </StepContent>
         </Step>
         <Step>
@@ -167,6 +176,7 @@ const AddShippModal = ({ idship }) => {
               handleNext={handleNext}
               setActiveNavItem
               activeStep
+              shipdata={shipdata}
             />
           </StepContent>
         </Step>

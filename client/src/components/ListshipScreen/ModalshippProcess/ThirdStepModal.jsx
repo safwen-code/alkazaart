@@ -3,15 +3,7 @@ import { Box, TextField, Button, Paper } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-const ThirdStepModal = ({
-  handleNext,
-  handleBack,
-  setshipdata,
-  shipdata,
-  idClient,
-  shipCreateAction,
-  setActiveNavItem,
-}) => {
+const ThirdStepModal = ({ handleBack, shipdata, idClient }) => {
   const [etaSete, setetaSete] = useState('')
   const [etdMarseille, setetdMarseille] = useState('')
   const [etaRades, setetaRades] = useState('')
@@ -19,20 +11,6 @@ const ThirdStepModal = ({
   const [customeredd, setcustomeredd] = useState('')
   const [comment, setcomment] = useState('')
 
-  const handelClick = () => {
-    handleNext()
-    // setshipdata({
-    //   ...shipdata,
-    //   thirdstep: {
-    //     etaSete,
-    //     etdMarseille,
-    //     etaRades,
-    //     etdAtvyl,
-    //     customeredd,
-    //     comment,
-    //   },
-    // })
-  }
   const thirdstep = {
     etaSete,
     etdMarseille,
@@ -42,10 +20,12 @@ const ThirdStepModal = ({
     comment,
   }
   let datatosend = { ...shipdata, thirdstep }
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const confirmShip = () => {
+    console.log(datatosend)
     //work to :: send data /ship/adddata
     console.log('confirm ship')
   }
