@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import { Box, TextField, Button, Paper } from '@mui/material'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 
 const ThirdStepModal = ({ shipdata }) => {
   const [etaSete, setetaSete] = useState('')
@@ -20,9 +18,6 @@ const ThirdStepModal = ({ shipdata }) => {
     comment,
   }
   let datatosend = { ...shipdata, thirdstep }
-
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   const confirmShip = () => {
     console.log(datatosend)

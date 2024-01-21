@@ -223,3 +223,8 @@ export const secondshipAction = (id, datatosend) => async (
     })
   }
 }
+
+//update second step modal
+export const updateSecondModalAction = () => async (dispatch) => {}
+//update third step modal
+export const updateThirdModalAction = () => async (dispatch) => {}

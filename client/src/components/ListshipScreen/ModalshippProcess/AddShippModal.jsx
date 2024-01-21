@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react'
 import {
-  Paper,
   Box,
   Stepper,
   Step,
   StepLabel,
   StepContent,
   Typography,
-  Button,
   Grid,
   StepIcon,
   InputAdornment,
@@ -59,18 +57,9 @@ const AddShippModal = ({ idship }) => {
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1)
   }
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1)
-  }
   //end steps work
 
-  let {
-    firststep,
-    fornisseuremail,
-    fornisseurname,
-    _id,
-    fornisseur,
-  } = shipbyidReducer
+  let { fornisseuremail } = shipbyidReducer
 
   const [shipdata, setshipdata] = useState('')
 

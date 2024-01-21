@@ -8,8 +8,6 @@ import {
   Select,
   MenuItem,
 } from '@mui/material'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 
 const SecondStepModal = ({ handleNext, setshipdata }) => {
   const [date, setdate] = useState('')
@@ -63,9 +61,6 @@ const SecondStepModal = ({ handleNext, setshipdata }) => {
     CMR,
     trailer,
   }
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-
   //quite step
   const testQuit = () => {
     //work to :: send data /ship/adddata ==>step2

@@ -108,3 +108,8 @@ export const addShippSecondstepReducer = (state = {}, action) => {
       return state
   }
 }
+
+//update seccond step Modal
+export const updateSecondStepReducer = (state = {}, action) => {}
+//update thirs step Modal
+export const updateThirdStepReducer = (state = {}, action) => {}
