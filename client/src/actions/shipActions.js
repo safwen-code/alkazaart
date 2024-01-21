@@ -225,7 +225,41 @@ export const secondshipAction = (id, datatosend) => async (
 }
 
 // //update second step modal
-export const updateSecondModalAction = () => async (dispatch) => {}
+export const updateSecondModalAction = (id, datatosend) => async (
+  dispatch,
+  getState,
+) => {
+  try {
+    dispatch({
+      type: ADD_SHIP_SECONDSTEP_REQUEST,
+    })
+    const {
+      userLogin: { userinfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `bearer ${userinfo.token}`,
+      },
+    }
+
+    const { data } = await axios.post(
+      `/api/ship/updatecurrentship`,
+      { id, datatosend },
+      config,
+    )
+    dispatch({ type: ADD_SHIP_SECONDSTEP_SUCCESS, payload: data })
+  } catch (error) {
+    dispatch({
+      type: ADD_SHIP_SECONDSTEP_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
 
 // //update third step modal
 // export const updateThirdModalAction = () => async (dispatch) => {}

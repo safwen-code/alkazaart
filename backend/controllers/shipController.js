@@ -142,8 +142,8 @@ const createShip = asyncHandler(async (req, res) => {
 //update current ship
 const updateCurrentShip = asyncHandler(async (req, res) => {
   const id = req.body.id
-  const secondstep = req.body.secondstep
-  const thirdstep = req.body.thirdstep
+  const secondstep = req.body.datatosend.secondstep
+  const thirdstep = req.body.datatosend.thirdstep
 
   const updateStatement = {}
 

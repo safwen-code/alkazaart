@@ -66,6 +66,7 @@ const SecondStepModal = ({ handleNext, setshipdata }) => {
   }
   const dispatch = useDispatch()
   const shipbyidReducer = useSelector((state) => state.shipbyidReducer)
+  const { _id } = shipbyidReducer
   //quite step
   const testQuit = () => {
     dispatch()
