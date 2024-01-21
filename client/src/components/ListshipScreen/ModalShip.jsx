@@ -25,11 +25,10 @@ const style = {
   },
 }
 
-const ModalShip = ({ idship, handleOpen, open, handleClose }) => {
+const ModalShip = ({ idship, open, handleClose }) => {
   // console.log(idship, 'from modal ship')
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
       <Modal
         open={open}
         onClose={handleClose}
