@@ -224,8 +224,8 @@ export const secondshipAction = (id, datatosend) => async (
   }
 }
 
-// //update second step modal
-export const updateSecondModalAction = (id, datatosend) => async (
+// //update secondstep || thirdstep modal
+export const updateShipModalAction = (id, datatosend) => async (
   dispatch,
   getState,
 ) => {
@@ -260,6 +260,3 @@ export const updateSecondModalAction = (id, datatosend) => async (
     })
   }
 }
-
-// //update third step modal
-// export const updateThirdModalAction = () => async (dispatch) => {}
