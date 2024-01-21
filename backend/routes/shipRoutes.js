@@ -7,6 +7,7 @@ import {
   getShipById,
   addfirststep,
   addsecondstep,
+  updateCurrentShip,
 } from '../controllers/shipController.js'
 import { admin, protect } from '../middelware/authMiddleware.js'
 
@@ -17,4 +18,5 @@ router.route('/getship/:id').get(protect, admin, getShipById)
 
 router.route('/addfirststep').post(protect, admin, addfirststep)
 router.route('/addsecondstep').post(protect, admin, addsecondstep)
+router.route('/updatecurrentship').post(protect, admin, updateCurrentShip)
 export default router

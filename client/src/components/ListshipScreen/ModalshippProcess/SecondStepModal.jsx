@@ -9,6 +9,9 @@ import {
   MenuItem,
 } from '@mui/material'
 
+import { useDispatch, useSelector } from 'react-redux'
+import { secondshipAction } from '../../../actions/shipActions'
+
 const SecondStepModal = ({ handleNext, setshipdata }) => {
   const [date, setdate] = useState('')
   const [orderstatus, setorderstatus] = useState('')
@@ -61,8 +64,11 @@ const SecondStepModal = ({ handleNext, setshipdata }) => {
     CMR,
     trailer,
   }
+  const dispatch = useDispatch()
+  const shipbyidReducer = useSelector((state) => state.shipbyidReducer)
   //quite step
   const testQuit = () => {
+    dispatch()
     //work to :: send data /ship/adddata ==>step2
     console.log(secondstep)
     console.log('quite second ship')

@@ -139,6 +139,37 @@ const createShip = asyncHandler(async (req, res) => {
   res.status(201).json(createdShip)
 })
 
+//update current ship
+const updateCurrentShip = asyncHandler(async (req, res) => {
+  const id = req.body.id
+  const secondstep = req.body.secondstep
+  const thirdstep = req.body.thirdstep
+
+  const updateStatement = {}
+
+  if (secondstep !== undefined) {
+    updateStatement.secondstep = secondstep
+  }
+
+  if (thirdstep !== undefined) {
+    updateStatement.thirdstep = thirdstep
+  }
+
+  const ship = await Ship.findById({ _id: id })
+
+  if (!ship) {
+    throw new Error('No ship found with the given id')
+  } else {
+    const update = await Ship.findOneAndUpdate(
+      { _id: id },
+      updateStatement, // Corrected: Pass the object directly
+      { new: true },
+    )
+
+    await update.save()
+  }
+})
+
 export {
   createShip,
   getAllShip,
@@ -146,4 +177,5 @@ export {
   getShipById,
   addfirststep,
   addsecondstep,
+  updateCurrentShip,
 }
