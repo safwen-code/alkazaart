@@ -11,13 +11,7 @@ import {
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-const SecondStepModal = ({
-  handleNext,
-  setshipdata,
-
-  idClient,
-  setActiveNavItem,
-}) => {
+const SecondStepModal = ({ handleNext, setshipdata }) => {
   const [date, setdate] = useState('')
   const [orderstatus, setorderstatus] = useState('')
   const [scheduled, setscheduled] = useState('')

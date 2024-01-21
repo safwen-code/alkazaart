@@ -77,10 +77,6 @@ const AddShippModal = ({ idship }) => {
   } = shipbyidReducer
 
   const [shipdata, setshipdata] = useState('')
-  //add shippemnt
-  const addship = () => {
-    console.log('add shipp modal')
-  }
 
   return (
     <Box
@@ -156,7 +152,6 @@ const AddShippModal = ({ idship }) => {
           <StepContent>
             <SecondStepModal
               handleNext={handleNext}
-              setActiveNavItem
               setshipdata={setshipdata}
             />
           </StepContent>
@@ -171,13 +166,7 @@ const AddShippModal = ({ idship }) => {
             Shipment Process
           </StepLabel>
           <StepContent>
-            <ThirdStepModal
-              handleBack={handleBack}
-              handleNext={handleNext}
-              setActiveNavItem
-              activeStep
-              shipdata={shipdata}
-            />
+            <ThirdStepModal shipdata={shipdata} />
           </StepContent>
         </Step>
       </Stepper>

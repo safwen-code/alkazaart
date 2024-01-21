@@ -3,7 +3,7 @@ import { Box, TextField, Button, Paper } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-const ThirdStepModal = ({ handleBack, shipdata, idClient }) => {
+const ThirdStepModal = ({ shipdata }) => {
   const [etaSete, setetaSete] = useState('')
   const [etdMarseille, setetdMarseille] = useState('')
   const [etaRades, setetaRades] = useState('')
