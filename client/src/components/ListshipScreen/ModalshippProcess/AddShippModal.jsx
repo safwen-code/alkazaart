@@ -17,7 +17,6 @@ import {
 } from '@mui/material'
 import { getshipAction } from '../../../actions/shipActions'
 import { useDispatch, useSelector } from 'react-redux'
-import FirstShippModal from './FirstShippModal'
 import SecondStepModal from './SecondStepModal'
 import { useState } from 'react'
 import ThirdStepModal from './ThirdStepModal'
@@ -64,9 +63,6 @@ const AddShippModal = ({ idship }) => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1)
   }
   //end steps work
-  const handleReset = () => {
-    setActiveStep(0)
-  }
 
   let {
     firststep,
@@ -132,13 +128,6 @@ const AddShippModal = ({ idship }) => {
           >
             Shipment Détails
           </StepLabel>
-          <StepContent>
-            <FirstShippModal
-              handleBack={handleBack}
-              handleNext={handleNext}
-              setActiveNavItem
-            />
-          </StepContent>
         </Step>
         <Step>
           <StepLabel
