@@ -4,9 +4,6 @@ import {
   LOGIN_SUCCESS,
   LOGOUT_SUCESS,
   CLIENT_ADDSHIP_FAIL,
-  CLIENT_ADDSHIP_REQUEST,
-  CLIENT_ADDSHIP_SUCESS,
-  CLIENT_FIRSTSHIP_FAIL,
   CLIENT_FIRSTSHIP_REQUEST,
   CLIENT_FIRSTSHIP_SUCESS,
   CLIENT_SECONDSHIP_FAIL,
@@ -85,28 +82,25 @@ export const firstshipAction = (firststep) => async (dispatch, getState) => {
 }
 
 //create ship secondstep
-export const secondshipAction = (id, datatosend) => async (
-  dispatch,
-  getState,
-) => {
+export const secondshipAction = (datatosend) => async (dispatch, getState) => {
   try {
     dispatch({
       type: CLIENT_SECONDSHIP_REQUEST,
     })
-    // const {
-    //   userLogin: { userinfo },
-    // } = getState()
+    const {
+      clientLogin: { clientinfo },
+    } = getState()
 
     const config = {
       headers: {
         'Content-Type': 'application/json',
-        // Authorization: `bearer ${userinfo.token}`,
+        Authorization: `bearer ${clientinfo.token}`,
       },
     }
 
     const { data } = await axios.post(
-      `/api/client/addstep1client`,
-      { id, datatosend },
+      `/api/client/addstep2client`,
+      { datatosend },
       config,
     )
     dispatch({ type: CLIENT_SECONDSHIP_SUCESS, payload: data })

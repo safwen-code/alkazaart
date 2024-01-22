@@ -9,8 +9,7 @@ import {
   Select,
   MenuItem,
 } from '@mui/material'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { firstshipAction } from '../../../actions/userActions'
 
 const FirstShipp = ({ shipdata, handleNext, handleBack, setshipdata }) => {
@@ -78,9 +77,6 @@ const FirstShipp = ({ shipdata, handleNext, handleBack, setshipdata }) => {
     deliveryterms,
   }
   const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const clientLogin = useSelector((state) => state.clientLogin)
-  const { clientinfo } = clientLogin
 
   //quite step
   const testQuit = () => {

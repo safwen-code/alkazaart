@@ -10,6 +10,7 @@ import {
 } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { secondshipAction } from '../../../actions/userActions'
 
 const SecondStep = ({ shipdata, handleNext, handleBack, setshipdata }) => {
   const [date, setdate] = useState('')
@@ -67,14 +68,12 @@ const SecondStep = ({ shipdata, handleNext, handleBack, setshipdata }) => {
     // createdby: userinfo.email,
   }
   let datatosend = { ...shipdata, secondstep }
+
   const dispatch = useDispatch()
-  const navigate = useNavigate()
   //quite step
   const testQuit = () => {
-    console.log(datatosend)
-    //work to :: send data /ship/adddata
     // console.log(datatosend)
-    // dispatch(secondshipAction(idClient, datatosend))
+    dispatch(secondshipAction(datatosend))
     //   .then(() => {
     //     navigate('/dashadmin/listship')
     //     setActiveNavItem('/dashadmin/listship')

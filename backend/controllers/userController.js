@@ -68,7 +68,7 @@ const addfirststep = asyncHandler(async (req, res) => {
 
 //add the Second step
 const addsecondstep = asyncHandler(async (req, res) => {
-  let { firststep, secondstep } = req.body
+  let { firststep, secondstep } = req.body.datatosend
 
   //create product
   const ship = new Ship({
