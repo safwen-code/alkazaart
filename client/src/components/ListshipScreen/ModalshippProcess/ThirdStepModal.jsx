@@ -11,6 +11,8 @@ const ThirdStepModal = ({ shipdata }) => {
   const [customeredd, setcustomeredd] = useState('')
   const [comment, setcomment] = useState('')
 
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userinfo } = userLogin
   const thirdstep = {
     etaSete,
     etdMarseille,
@@ -18,6 +20,7 @@ const ThirdStepModal = ({ shipdata }) => {
     etdAtvyl,
     customeredd,
     comment,
+    createdby: userinfo.email,
   }
   let datatosend = { ...shipdata, thirdstep }
 

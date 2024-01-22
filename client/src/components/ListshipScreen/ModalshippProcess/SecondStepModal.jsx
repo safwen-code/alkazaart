@@ -35,6 +35,9 @@ const SecondStepModal = ({ handleNext, setshipdata }) => {
 
   const pickelocationInfo = ['Mars Logistics Hub', 'Suppliers Warehouse']
 
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userinfo } = userLogin
+
   const handelClick = () => {
     handleNext()
     //grab Data
@@ -49,6 +52,7 @@ const SecondStepModal = ({ handleNext, setshipdata }) => {
         etdIstanbul,
         CMR,
         trailer,
+        createdby: userinfo.email,
       },
     })
   }
@@ -63,6 +67,7 @@ const SecondStepModal = ({ handleNext, setshipdata }) => {
     etdIstanbul,
     CMR,
     trailer,
+    createdby: userinfo.email,
   }
   const dispatch = useDispatch()
   const shipbyidReducer = useSelector((state) => state.shipbyidReducer)
