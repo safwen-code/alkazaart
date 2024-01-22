@@ -9,6 +9,11 @@ import {
 } from '../controllers/fornisseurController.js'
 import { admin, protect } from '../middelware/authMiddleware.js'
 import { clientProtect } from '../middelware/clientMiddelware.js'
+import {
+  addfirststep,
+  addsecondstep,
+  createShip,
+} from '../controllers/userController.js'
 
 //get my ships
 router.route('/getmyship').get(clientProtect, getMyShip)
@@ -20,5 +25,14 @@ router.route('/allfornisseur').get(protect, admin, getAllFornisseur)
 //routes
 router.route('/loginfornisseur').post(authFornisseur)
 router.route('/test').get(clientProtect, testRoute)
+
+//add first step route
+router.route('/addstep1client').post(clientProtect, addfirststep)
+
+//add second step route
+router.route('/addstep2client').post(clientProtect, addsecondstep)
+
+//add second step route
+router.route('/addstep3client').post(clientProtect, createShip)
 
 export default router

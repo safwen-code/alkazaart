@@ -8,7 +8,7 @@ const shipSchema = mongoose.Schema({
   // },
   fornisseur: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
+    // required: true,
     ref: 'Fornisseur',
   },
   fornisseurname: {
