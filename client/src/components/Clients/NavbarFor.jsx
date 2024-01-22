@@ -17,7 +17,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 import atvyl from '../../images/atvyl.jpg'
 import { alpha } from '@mui/system'
 
-const pages = ['myships', 'suivieship']
+const pages = ['myships', 'addship']
 
 const NavbarFor = ({ setActiveNavItem }) => {
   const [anchorElNav, setAnchorElNav] = useState(null)
@@ -36,9 +36,9 @@ const NavbarFor = ({ setActiveNavItem }) => {
         navigate('/dashclient/myships')
         setActiveNavItem('/dashclient/myships')
         break
-      case 'suivieship':
-        navigate('/dashclient/suivieship')
-        setActiveNavItem('/dashclient/suivieship')
+      case 'addship':
+        navigate('/dashclient/addship')
+        setActiveNavItem('/dashclient/addship')
         break
       default:
         navigate('/dashclient/myships')
@@ -53,9 +53,9 @@ const NavbarFor = ({ setActiveNavItem }) => {
         navigate('/dashclient/myships')
         setActiveNavItem('/dashclient/myships')
         break
-      case 'suivieship':
-        navigate('/dashclient/suivieship')
-        setActiveNavItem('/dashclient/suivieship')
+      case 'addship':
+        navigate('/dashclient/addship')
+        setActiveNavItem('/dashclient/addship')
         break
       default:
         navigate('/dashclient/myships')
