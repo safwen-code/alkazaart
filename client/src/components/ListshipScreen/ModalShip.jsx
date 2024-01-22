@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Modal, Box } from '@mui/material'
+import { Modal, Box } from '@mui/material'
 import AddShippModal from './ModalshippProcess/AddShippModal'
 
 const style = {
@@ -36,7 +36,7 @@ const ModalShip = ({ idship, open, handleClose }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={{ ...style, overflow: 'auto' }}>
-          <AddShippModal idship={idship} />
+          <AddShippModal idship={idship} handleClose={handleClose} />
         </Box>
       </Modal>
     </div>

@@ -18,7 +18,7 @@ import { shipListAction } from '../../actions/shipActions.js'
 import Alerts from '../../layout/Alerts.jsx'
 import ModalShip from './ModalShip.jsx'
 
-const ListShip = () => {
+const ListShip = ({ setActiveNavItem }) => {
   const dispatch = useDispatch()
 
   const userLogin = useSelector((state) => state.userLogin)
@@ -128,6 +128,7 @@ const ListShip = () => {
           handleOpen={openModal}
           open={isModalOpen}
           idship={idship}
+          setActiveNavItem={setActiveNavItem}
         />
       )}{' '}
       {<ListCardSheep userLogin={userLogin} />}

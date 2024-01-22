@@ -21,7 +21,7 @@ import ThirdStepModal from './ThirdStepModal'
 
 import AccountCircle from '@mui/icons-material/AccountCircle'
 
-const AddShippModal = ({ idship }) => {
+const AddShippModal = ({ idship, handleClose }) => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getshipAction(idship))
@@ -131,6 +131,7 @@ const AddShippModal = ({ idship }) => {
             <SecondStepModal
               handleNext={handleNext}
               setshipdata={setshipdata}
+              handleClose={handleClose}
             />
           </StepContent>
         </Step>
@@ -144,12 +145,11 @@ const AddShippModal = ({ idship }) => {
             Shipment Process
           </StepLabel>
           <StepContent>
-            <ThirdStepModal shipdata={shipdata} />
+            <ThirdStepModal shipdata={shipdata} handleClose={handleClose} />
           </StepContent>
         </Step>
       </Stepper>
     </Box>
   )
 }
-
 export default AddShippModal

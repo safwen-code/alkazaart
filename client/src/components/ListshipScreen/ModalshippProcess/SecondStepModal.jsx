@@ -12,7 +12,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { updateShipModalAction } from '../../../actions/shipActions'
 
-const SecondStepModal = ({ handleNext, setshipdata }) => {
+const SecondStepModal = ({ handleNext, setshipdata, handleClose }) => {
   const [date, setdate] = useState('')
   const [orderstatus, setorderstatus] = useState('')
   const [scheduled, setscheduled] = useState('')
@@ -75,12 +75,16 @@ const SecondStepModal = ({ handleNext, setshipdata }) => {
   let datatosend = {
     secondstep: secondstep,
   }
+
   //quite step
   const testQuit = () => {
     dispatch(updateShipModalAction(_id, datatosend))
-    //work to :: send data /ship/adddata ==>step2
-    // console.log(secondstep)
-    // console.log('quite second ship')
+      .then(() => {
+        handleClose()
+      })
+      .catch((error) => {
+        console.error('Error creating fornisseur:', error)
+      })
   }
 
   return (
