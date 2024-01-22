@@ -11,6 +11,9 @@ import {
   CLIENT_SECONDSHIP_SUCESS,
   CLIENT_ADDSHIP_REQUEST,
   CLIENT_ADDSHIP_SUCESS,
+  NBR_CLIENTSHIP_REQUEST,
+  NBR_CLIENTSHIP_SUCCESS,
+  NBR_CLIENTSHIP_FAIL,
 } from '../constants/userConstant'
 import axios from 'axios'
 
@@ -143,6 +146,36 @@ export const addshipAction = (datatosend) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: CLIENT_ADDSHIP_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+//get all ship number
+export const shipNbrAction = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: NBR_CLIENTSHIP_REQUEST,
+    })
+    const {
+      clientLogin: { clientinfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `bearer ${clientinfo.token}`,
+      },
+    }
+
+    const { data } = await axios.get(`/api/client/getnumberships`, config)
+    dispatch({ type: NBR_CLIENTSHIP_SUCCESS, payload: data })
+  } catch (error) {
+    dispatch({
+      type: NBR_CLIENTSHIP_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

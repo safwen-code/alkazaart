@@ -12,6 +12,9 @@ import {
   CLIENT_SECONDSHIP_FAIL,
   CLIENT_FIRSTSHIP_SUCESS,
   CLIENT_FIRSTSHIP_FAIL,
+  NBR_CLIENTSHIP_REQUEST,
+  NBR_CLIENTSHIP_SUCCESS,
+  NBR_CLIENTSHIP_FAIL,
 } from '../constants/userConstant'
 export const loginReducer = (state = {}, action) => {
   switch (action.type) {
@@ -106,6 +109,21 @@ export const step2Reducer = (state = {}, action) => {
         loading: false,
         error: action.payload,
       }
+    default:
+      return state
+  }
+}
+
+//nbrs of sheep
+export const clientshipNbrReducer = (state = {}, action) => {
+  switch (action.type) {
+    case NBR_CLIENTSHIP_REQUEST:
+      return { loading: true }
+    case NBR_CLIENTSHIP_SUCCESS:
+      return { loading: false, nbrships: action.payload }
+    case NBR_CLIENTSHIP_FAIL:
+      return { loading: false, error: action.payload }
+
     default:
       return state
   }

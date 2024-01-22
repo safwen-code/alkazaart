@@ -8,6 +8,7 @@ import {
   logoutReducer,
   step1Reducer,
   step2Reducer,
+  clientshipNbrReducer,
 } from './reducer/userReducers'
 import {
   shipCreateReducer,
@@ -53,6 +54,7 @@ const reducer = combineReducers({
   addCship: addship,
   addFCship: step1Reducer,
   addSCship: step2Reducer,
+  nbrshipclient: clientshipNbrReducer,
   /*** */
   utilisateurCreate: utilisateurReducer,
   utilisateurList: AllutilisateurReducer,
