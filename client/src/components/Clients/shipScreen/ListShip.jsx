@@ -15,6 +15,7 @@ import MasterDetailGrid from './MasterDetailGrid.jsx'
 // import ListCardSheep from './ListCardSheep.jsx'
 
 import { myShipsAction } from '../../../actions/clientAction.js'
+import ListCardSheep from './ListCardSheep.jsx'
 
 const ListShip = () => {
   const dispatch = useDispatch()
@@ -65,6 +66,7 @@ const ListShip = () => {
   const theme = useTheme()
   return (
     <>
+      <ListCardSheep />
       <Grid m={4}>
         <Chip
           label="Chips in first Step"
