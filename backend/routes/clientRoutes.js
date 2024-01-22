@@ -12,6 +12,7 @@ import { clientProtect } from '../middelware/clientMiddelware.js'
 import {
   addfirststep,
   addsecondstep,
+  countSheepClient,
   createShip,
 } from '../controllers/userController.js'
 
@@ -34,5 +35,8 @@ router.route('/addstep2client').post(clientProtect, addsecondstep)
 
 //add second step route
 router.route('/addstep3client').post(clientProtect, createShip)
+
+//get numbers of ships
+router.route('/getnumberships').get(clientProtect, countSheepClient)
 
 export default router

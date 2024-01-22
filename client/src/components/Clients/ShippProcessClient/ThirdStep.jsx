@@ -38,7 +38,6 @@ const ThirdStep = ({ shipdata, handleNext, handleBack, setshipdata }) => {
   }
   let datatosend = { ...shipdata, thirdstep }
   const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   const testQuit = () => {
     console.log(datatosend)

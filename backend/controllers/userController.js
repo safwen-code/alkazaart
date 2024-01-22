@@ -101,4 +101,59 @@ const createShip = asyncHandler(async (req, res) => {
   const createdShip = await ship.save()
   res.status(201).json(createdShip)
 })
-export { authUser, registerUser, addfirststep, addsecondstep, createShip }
+
+//get nbr sheep
+//nbr sheep firststep
+//nbr sheep secondstep
+//nbr sheep thirdstep
+const countSheepClient = asyncHandler(async (req, res) => {
+  // console.log(req.client)
+  const ships = await Ship.aggregate([
+    {
+      $match: {
+        fornisseur: req.client._id,
+      },
+    },
+    {
+      $group: {
+        _id: req.client._id,
+        totalShips: { $sum: 1 },
+        totalFirstStep: {
+          $sum: {
+            $cond: { if: { $ifNull: ['$firststep', false] }, then: 1, else: 0 },
+          },
+        },
+        totalSecondStep: {
+          $sum: {
+            $cond: {
+              if: { $ifNull: ['$secondstep', false] },
+              then: 1,
+              else: 0,
+            },
+          },
+        },
+        totalThirdStep: {
+          $sum: {
+            $cond: { if: { $ifNull: ['$thirdstep', false] }, then: 1, else: 0 },
+          },
+        },
+      },
+    },
+  ])
+  // console.log(ships)
+  if (ships && ships.length > 0) {
+    res.status(201).json(ships[0])
+  } else {
+    res.status(401)
+    throw new Error('No shipment declared')
+  }
+})
+
+export {
+  authUser,
+  registerUser,
+  addfirststep,
+  addsecondstep,
+  createShip,
+  countSheepClient,
+}
