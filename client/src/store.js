@@ -2,7 +2,13 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { thunk } from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
-import { loginReducer, logoutReducer } from './reducer/userReducers'
+import {
+  addship,
+  loginReducer,
+  logoutReducer,
+  step1Reducer,
+  step2Reducer,
+} from './reducer/userReducers'
 import {
   shipCreateReducer,
   shipListReducer,
@@ -44,6 +50,9 @@ const reducer = combineReducers({
   clientList: AllclientReducer,
   clientLogin: loginClientReducer,
   clientShips: myshipsReducer,
+  addCship: addship,
+  addFCship: step1Reducer,
+  addSCship: step2Reducer,
   /*** */
   utilisateurCreate: utilisateurReducer,
   utilisateurList: AllutilisateurReducer,

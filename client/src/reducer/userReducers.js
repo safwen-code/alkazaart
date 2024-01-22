@@ -3,6 +3,15 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT_SUCESS,
+  CLIENT_ADDSHIP_FAIL,
+  CLIENT_ADDSHIP_SUCESS,
+  CLIENT_ADDSHIP_REQUEST,
+  CLIENT_FIRSTSHIP_REQUEST,
+  CLIENT_SECONDSHIP_REQUEST,
+  CLIENT_SECONDSHIP_SUCESS,
+  CLIENT_SECONDSHIP_FAIL,
+  CLIENT_FIRSTSHIP_SUCESS,
+  CLIENT_FIRSTSHIP_FAIL,
 } from '../constants/userConstant'
 export const loginReducer = (state = {}, action) => {
   switch (action.type) {
@@ -33,6 +42,69 @@ export const logoutReducer = (state = {}, action) => {
         fornisseurCreate: {},
         utilisateurCreate: {},
         utilisateurList: {},
+      }
+    default:
+      return state
+  }
+}
+
+export const addship = (state = {}, action) => {
+  switch (action.type) {
+    case CLIENT_ADDSHIP_REQUEST:
+      return {
+        loading: true,
+      }
+    case CLIENT_ADDSHIP_SUCESS:
+      return {
+        loading: false,
+        ...action.payload,
+      }
+    case CLIENT_ADDSHIP_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      }
+    default:
+      return state
+  }
+}
+
+export const step1Reducer = (state = {}, action) => {
+  switch (action.type) {
+    case CLIENT_FIRSTSHIP_REQUEST:
+      return {
+        loading: true,
+      }
+    case CLIENT_FIRSTSHIP_SUCESS:
+      return {
+        loading: false,
+        ...action.payload,
+      }
+    case CLIENT_FIRSTSHIP_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      }
+    default:
+      return state
+  }
+}
+
+export const step2Reducer = (state = {}, action) => {
+  switch (action.type) {
+    case CLIENT_SECONDSHIP_REQUEST:
+      return {
+        loading: true,
+      }
+    case CLIENT_SECONDSHIP_SUCESS:
+      return {
+        loading: false,
+        ...action.payload,
+      }
+    case CLIENT_SECONDSHIP_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
       }
     default:
       return state
