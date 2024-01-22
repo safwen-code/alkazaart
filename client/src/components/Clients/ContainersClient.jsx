@@ -1,6 +1,6 @@
 import React from 'react'
 import ListShip from './shipScreen/ListShip'
-import CreateShip from './ShippProcess/CreateShip'
+import CreateShip from './ShippProcessClient/CreateShip'
 
 const ContainersClient = ({ activeNavItem, setActiveNavItem }) => {
   return (

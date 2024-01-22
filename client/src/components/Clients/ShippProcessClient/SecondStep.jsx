@@ -11,15 +11,7 @@ import {
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-const SecondStep = ({
-  shipdata,
-  handleNext,
-  handleBack,
-  setshipdata,
-  idClient,
-  shipCreateAction,
-  setActiveNavItem,
-}) => {
+const SecondStep = ({ shipdata, handleNext, handleBack, setshipdata }) => {
   const [date, setdate] = useState('')
   const [orderstatus, setorderstatus] = useState('')
   const [scheduled, setscheduled] = useState('')
@@ -57,6 +49,7 @@ const SecondStep = ({
         etdIstanbul,
         CMR,
         trailer,
+        // createdby: userinfo.email,
       },
     })
   }
@@ -71,25 +64,25 @@ const SecondStep = ({
     etdIstanbul,
     CMR,
     trailer,
+    // createdby: userinfo.email,
   }
   let datatosend = { ...shipdata, secondstep }
   const dispatch = useDispatch()
   const navigate = useNavigate()
   //quite step
   const testQuit = () => {
+    console.log(datatosend)
     //work to :: send data /ship/adddata
     // console.log(datatosend)
-
-    dispatch(shipCreateAction(idClient, datatosend))
-      .then(() => {
-        navigate('/dashadmin/listship')
-        setActiveNavItem('/dashadmin/listship')
-      })
-      .catch((error) => {
-        console.error('Error creating fornisseur:', error)
-      })
+    // dispatch(secondshipAction(idClient, datatosend))
+    //   .then(() => {
+    //     navigate('/dashadmin/listship')
+    //     setActiveNavItem('/dashadmin/listship')
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error creating fornisseur:', error)
+    //   })
   }
-
   return (
     <>
       <Box

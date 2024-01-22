@@ -3,15 +3,7 @@ import { Box, TextField, Button } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-const ThirdStep = ({
-  handleNext,
-  handleBack,
-  setshipdata,
-  shipdata,
-  idClient,
-  shipCreateAction,
-  setActiveNavItem,
-}) => {
+const ThirdStep = ({ shipdata, handleNext, handleBack, setshipdata }) => {
   const [etaSete, setetaSete] = useState('')
   const [etdMarseille, setetdMarseille] = useState('')
   const [etaRades, setetaRades] = useState('')
@@ -30,6 +22,7 @@ const ThirdStep = ({
         etdAtvyl,
         customeredd,
         comment,
+        // createdby: userinfo.email,
       },
     })
   }
@@ -40,23 +33,24 @@ const ThirdStep = ({
     etdAtvyl,
     customeredd,
     comment,
+    // createdby: userinfo.email,
   }
   let datatosend = { ...shipdata, thirdstep }
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const testQuit = () => {
+    console.log(datatosend)
     //work to :: send data /ship/adddata
-    dispatch(shipCreateAction(idClient, datatosend))
-      .then(() => {
-        navigate('/dashadmin/listship')
-        setActiveNavItem('/dashadmin/listship')
-      })
-      .catch((error) => {
-        console.error('Error creating fornisseur:', error)
-      })
+    // dispatch(shipCreateAction(idClient, datatosend))
+    //   .then(() => {
+    //     navigate('/dashadmin/listship')
+    //     setActiveNavItem('/dashadmin/listship')
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error creating fornisseur:', error)
+    //   })
   }
-
   return (
     <>
       <Box

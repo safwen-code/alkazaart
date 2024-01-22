@@ -12,13 +12,7 @@ import {
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-const FirstShipp = ({
-  handleNext,
-  setshipdata,
-  idClient,
-  shipCreateAction,
-  setActiveNavItem,
-}) => {
+const FirstShipp = ({ shipdata, handleNext, handleBack, setshipdata }) => {
   const [trackingnumber, settrackingnumber] = useState('')
   const [shipper, setshipper] = useState('')
   const [bookingdate, setbookingdate] = useState('')
@@ -86,17 +80,16 @@ const FirstShipp = ({
   const navigate = useNavigate()
   //quite step
   const testQuit = () => {
-    // console.log(firststep)
+    console.log(firststep)
     // console.log(idClient)
-
-    dispatch(shipCreateAction(idClient, { firststep }))
-      .then(() => {
-        navigate('/dashadmin/listship')
-        setActiveNavItem('/dashadmin/listship')
-      })
-      .catch((error) => {
-        console.error('Error creating fornisseur:', error)
-      })
+    // dispatch(shipCreateAction(idClient, { firststep }))
+    //   .then(() => {
+    //     navigate('/dashadmin/listship')
+    //     setActiveNavItem('/dashadmin/listship')
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error creating fornisseur:', error)
+    //   })
     //work to :: send data /ship/adddata
   }
 
