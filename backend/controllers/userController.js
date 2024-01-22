@@ -51,16 +51,13 @@ const registerUser = asyncHandler(async (req, res) => {
 
 //add the first step
 const addfirststep = asyncHandler(async (req, res) => {
-  //get fornisseur by his Id
-  // const id = req.body.id
-  // const admindata = await Fornisseur.findById({ _id: id })
-  // let { email } = admindata
-
+  // const id = req.body
   let { firststep } = req.body
-
   //create product
   const ship = new Ship({
     firststep,
+    fornisseuremail: req.client.email,
+    fornisseur: req.client.id,
   })
 
   console.log(ship)
@@ -70,19 +67,14 @@ const addfirststep = asyncHandler(async (req, res) => {
 
 //add the Second step
 const addsecondstep = asyncHandler(async (req, res) => {
-  //get fornisseur by his Id
-  const id = req.body.id
-  // const fornisseurdata = await Fornisseur.findById({ _id: id })
-  // let { name, email, createdAt } = fornisseurdata
-
   let { firststep, secondstep } = req.body
 
   //create product
   const ship = new Ship({
-    // fornisseur: id,
-    // fornisseurname: name,
-    // fornisseuremail: email,
-    // fournisseurcreated: createdAt,
+    fornisseur: req.client.id,
+    fornisseurname: req.client.name,
+    fornisseuremail: req.client.email,
+    fournisseurcreated: req.client.createdAt,
     firststep,
     secondstep,
   })
@@ -94,20 +86,13 @@ const addsecondstep = asyncHandler(async (req, res) => {
 
 //add sheep
 const createShip = asyncHandler(async (req, res) => {
-  // console.log(req.user)
-
-  //get fornisseur by his Id
-  const id = req.body.id
-  // const fornisseurdata = await Fornisseur.findById({ _id: id })
-  // let { name, email, createdAt } = fornisseurdata
-
   const { firststep, secondstep, thirdstep } = req.body
   //create product
   const ship = new Ship({
-    // fornisseur: id,
-    // fornisseurname: name,
-    // fornisseuremail: email,
-    // fournisseurcreated: createdAt,
+    fornisseur: req.client.id,
+    fornisseurname: req.client.name,
+    fornisseuremail: req.client.email,
+    fournisseurcreated: req.client.createdAt,
     firststep,
     secondstep,
     thirdstep,
