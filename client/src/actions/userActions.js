@@ -51,31 +51,28 @@ export const logoutuser = () => (dispatch) => {
 }
 
 //create ship firststep
-export const firstshipAction = (id, firststep) => async (
-  dispatch,
-  getState,
-) => {
+export const firstshipAction = (firststep) => async (dispatch, getState) => {
   try {
     dispatch({
       type: CLIENT_FIRSTSHIP_REQUEST,
     })
-    // const {
-    //   userLogin: { userinfo },
-    // } = getState()
+    const {
+      clientLogin: { clientinfo },
+    } = getState()
 
     const config = {
       headers: {
         'Content-Type': 'application/json',
-        // Authorization: `bearer ${userinfo.token}`,
+        Authorization: `bearer ${clientinfo.token}`,
       },
     }
 
     const { data } = await axios.post(
       `/api/client/addstep1client`,
-      { id, firststep },
+      { firststep },
       config,
     )
-    dispatch({ type: CLIENT_ADDSHIP_SUCESS, payload: data })
+    dispatch({ type: CLIENT_FIRSTSHIP_SUCESS, payload: data })
   } catch (error) {
     dispatch({
       type: CLIENT_ADDSHIP_FAIL,

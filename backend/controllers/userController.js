@@ -51,6 +51,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
 //add the first step
 const addfirststep = asyncHandler(async (req, res) => {
+  console.log(req.body)
   // const id = req.body
   let { firststep } = req.body
   //create product
@@ -60,7 +61,7 @@ const addfirststep = asyncHandler(async (req, res) => {
     fornisseur: req.client.id,
   })
 
-  console.log(ship)
+  // console.log(ship)
   const createdShip = await ship.save()
   res.status(201).json(createdShip)
 })

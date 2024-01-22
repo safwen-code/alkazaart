@@ -9,8 +9,9 @@ import {
   Select,
   MenuItem,
 } from '@mui/material'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { firstshipAction } from '../../../actions/userActions'
 
 const FirstShipp = ({ shipdata, handleNext, handleBack, setshipdata }) => {
   const [trackingnumber, settrackingnumber] = useState('')
@@ -78,19 +79,21 @@ const FirstShipp = ({ shipdata, handleNext, handleBack, setshipdata }) => {
   }
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const clientLogin = useSelector((state) => state.clientLogin)
+  const { clientinfo } = clientLogin
+
   //quite step
   const testQuit = () => {
-    console.log(firststep)
-    // console.log(idClient)
-    // dispatch(shipCreateAction(idClient, { firststep }))
-    //   .then(() => {
-    //     navigate('/dashadmin/listship')
-    //     setActiveNavItem('/dashadmin/listship')
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error creating fornisseur:', error)
-    //   })
-    //work to :: send data /ship/adddata
+    // console.log(firststep)
+    dispatch(firstshipAction(firststep))
+    // .then(() => {
+    //   // navigate('/dashadmin/listship')
+    //   // setActiveNavItem('/dashadmin/listship')
+    // })
+    // .catch((error) => {
+    //   console.error('Error creating fornisseur:', error)
+    // })
+    // work to :: send data /ship/adddata
   }
 
   return (
