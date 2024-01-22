@@ -87,7 +87,7 @@ const addsecondstep = asyncHandler(async (req, res) => {
 
 //add sheep
 const createShip = asyncHandler(async (req, res) => {
-  const { firststep, secondstep, thirdstep } = req.body
+  const { firststep, secondstep, thirdstep } = req.body.datatosend
   //create product
   const ship = new Ship({
     fornisseur: req.client.id,

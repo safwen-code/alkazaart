@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Box, TextField, Button } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { addshipAction } from '../../../actions/userActions'
 
 const ThirdStep = ({ shipdata, handleNext, handleBack, setshipdata }) => {
   const [etaSete, setetaSete] = useState('')
@@ -42,7 +43,7 @@ const ThirdStep = ({ shipdata, handleNext, handleBack, setshipdata }) => {
   const testQuit = () => {
     console.log(datatosend)
     //work to :: send data /ship/adddata
-    // dispatch(shipCreateAction(idClient, datatosend))
+    dispatch(addshipAction(datatosend))
     //   .then(() => {
     //     navigate('/dashadmin/listship')
     //     setActiveNavItem('/dashadmin/listship')

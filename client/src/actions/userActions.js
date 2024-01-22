@@ -9,6 +9,8 @@ import {
   CLIENT_SECONDSHIP_FAIL,
   CLIENT_SECONDSHIP_REQUEST,
   CLIENT_SECONDSHIP_SUCESS,
+  CLIENT_ADDSHIP_REQUEST,
+  CLIENT_ADDSHIP_SUCESS,
 } from '../constants/userConstant'
 import axios from 'axios'
 
@@ -116,31 +118,31 @@ export const secondshipAction = (datatosend) => async (dispatch, getState) => {
 }
 
 //create ship secondstep
-export const addshipAction = (id, datatosend) => async (dispatch, getState) => {
+export const addshipAction = (datatosend) => async (dispatch, getState) => {
   try {
     dispatch({
-      type: CLIENT_SECONDSHIP_REQUEST,
+      type: CLIENT_ADDSHIP_REQUEST,
     })
-    // const {
-    //   userLogin: { userinfo },
-    // } = getState()
+    const {
+      clientLogin: { clientinfo },
+    } = getState()
 
     const config = {
       headers: {
         'Content-Type': 'application/json',
-        // Authorization: `bearer ${userinfo.token}`,
+        Authorization: `bearer ${clientinfo.token}`,
       },
     }
 
     const { data } = await axios.post(
       `/api/client/addstep3client`,
-      { id, datatosend },
+      { datatosend },
       config,
     )
-    dispatch({ type: CLIENT_SECONDSHIP_SUCESS, payload: data })
+    dispatch({ type: CLIENT_ADDSHIP_SUCESS, payload: data })
   } catch (error) {
     dispatch({
-      type: CLIENT_SECONDSHIP_FAIL,
+      type: CLIENT_ADDSHIP_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

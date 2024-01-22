@@ -9,7 +9,6 @@ import {
   MenuItem,
 } from '@mui/material'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import { secondshipAction } from '../../../actions/userActions'
 
 const SecondStep = ({ shipdata, handleNext, handleBack, setshipdata }) => {
