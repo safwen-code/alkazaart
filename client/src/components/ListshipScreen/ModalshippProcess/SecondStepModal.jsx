@@ -12,7 +12,12 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { updateShipModalAction } from '../../../actions/shipActions'
 
-const SecondStepModal = ({ handleNext, setshipdata, handleClose }) => {
+const SecondStepModal = ({
+  handleNext,
+  setshipdata,
+  handleClose,
+  updateShipmentList,
+}) => {
   const [date, setdate] = useState('')
   const [orderstatus, setorderstatus] = useState('')
   const [scheduled, setscheduled] = useState('')
@@ -81,6 +86,7 @@ const SecondStepModal = ({ handleNext, setshipdata, handleClose }) => {
     dispatch(updateShipModalAction(_id, datatosend))
       .then(() => {
         handleClose()
+        updateShipmentList()
       })
       .catch((error) => {
         console.error('Error creating fornisseur:', error)

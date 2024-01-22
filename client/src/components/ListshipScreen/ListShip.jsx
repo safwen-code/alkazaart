@@ -18,7 +18,7 @@ import { shipListAction } from '../../actions/shipActions.js'
 import Alerts from '../../layout/Alerts.jsx'
 import ModalShip from './ModalShip.jsx'
 
-const ListShip = ({ setActiveNavItem }) => {
+const ListShip = () => {
   const dispatch = useDispatch()
 
   const userLogin = useSelector((state) => state.userLogin)
@@ -120,6 +120,10 @@ const ListShip = ({ setActiveNavItem }) => {
     )
   }
 
+  // update shipmentList and pass it like props
+  const updateShipmentList = () => {
+    dispatch(shipListAction())
+  }
   return (
     <>
       {isModalOpen && (
@@ -128,7 +132,7 @@ const ListShip = ({ setActiveNavItem }) => {
           handleOpen={openModal}
           open={isModalOpen}
           idship={idship}
-          setActiveNavItem={setActiveNavItem}
+          updateShipmentList={updateShipmentList}
         />
       )}{' '}
       {<ListCardSheep userLogin={userLogin} />}

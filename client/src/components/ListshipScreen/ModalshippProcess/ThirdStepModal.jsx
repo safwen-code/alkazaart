@@ -3,7 +3,7 @@ import { Box, TextField, Button, Paper } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateShipModalAction } from '../../../actions/shipActions'
 
-const ThirdStepModal = ({ shipdata, handleClose }) => {
+const ThirdStepModal = ({ shipdata, handleClose, updateShipmentList }) => {
   const [etaSete, setetaSete] = useState('')
   const [etdMarseille, setetdMarseille] = useState('')
   const [etaRades, setetaRades] = useState('')
@@ -32,6 +32,7 @@ const ThirdStepModal = ({ shipdata, handleClose }) => {
     dispatch(updateShipModalAction(_id, datatosend))
       .then(() => {
         handleClose()
+        updateShipmentList()
       })
       .catch((error) => {
         console.error('Error creating fornisseur:', error)
