@@ -33,4 +33,5 @@ router.route('/getmyship').get(clientProtect, getMyShip)
 
 //get ship by id
 router.route('/shipbyid/:id').get(clientProtect, getShipById)
+
 export default router

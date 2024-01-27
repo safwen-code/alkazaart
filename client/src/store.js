@@ -24,6 +24,7 @@ import {
   AllclientReducer,
   loginClientReducer,
   myshipsReducer,
+  shipbyidClientReducer,
 } from './reducer/clientReducers'
 
 import {
@@ -37,6 +38,7 @@ const reducer = combineReducers({
   /******** */
   userLogin: loginReducer,
   userLogout: logoutReducer,
+
   /**** */
   shipCreate: shipCreateReducer,
   shipList: shipListReducer,
@@ -51,6 +53,7 @@ const reducer = combineReducers({
   clientList: AllclientReducer,
   clientLogin: loginClientReducer,
   clientShips: myshipsReducer,
+  shipbyidClientReducer,
   addCship: addship,
   addFCship: step1Reducer,
   addSCship: step2Reducer,

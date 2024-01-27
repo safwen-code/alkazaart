@@ -11,6 +11,9 @@ import {
   MY_SHIPS_REQUEST,
   MY_SHIPS_SUCCESS,
   MY_SHIPS_FAIL,
+  GET_SHIPID_REQUEST,
+  GET_SHIPID_SUCCESS,
+  GET_SHIPID_FAIL,
 } from '../constants/clientConstants'
 import axios from 'axios'
 
@@ -127,6 +130,35 @@ export const myShipsAction = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: MY_SHIPS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+export const ShipByIdAction = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: GET_SHIPID_REQUEST,
+    })
+    const {
+      clientLogin: { clientinfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `bearer ${clientinfo.token}`,
+      },
+    }
+
+    const { data } = await axios.get(`/api/client/shipbyid/${id}`, config)
+    dispatch({ type: GET_SHIPID_SUCCESS, payload: data })
+  } catch (error) {
+    dispatch({
+      type: GET_SHIPID_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
