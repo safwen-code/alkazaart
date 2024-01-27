@@ -1,10 +1,6 @@
 import express from 'express'
 const router = express.Router()
-import {
-  authFornisseur,
-  testRoute,
-  getMyShip,
-} from '../controllers/fornisseurController.js'
+import { authFornisseur, getMyShip } from '../controllers/clientController.js'
 import { clientProtect } from '../middelware/clientMiddelware.js'
 import {
   addfirststep,
@@ -32,4 +28,9 @@ router.route('/addstep3client').post(clientProtect, createShip)
 //get numbers of ships
 router.route('/getnumberships').get(clientProtect, countSheepClient)
 
+//get My lists ships
+router.route('/getmyship').get(clientProtect, getMyShip)
+
+//get ship by id
+router.route('/shipbyid/:id').get(clientProtect, getShipById)
 export default router
