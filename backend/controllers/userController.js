@@ -84,6 +84,17 @@ const addsecondstep = asyncHandler(async (req, res) => {
   const createdShip = await ship.save()
   res.status(201).json(createdShip)
 })
+//get all fornisseur
+const getAllFornisseur = asyncHandler(async (req, res) => {
+  const fornisseurs = await Fornisseur.find({}).sort({ createdAt: -1 })
+  if (!fornisseurs) {
+    res.status(400)
+    throw new Error('no fornisseurs')
+  } else {
+    res.status(201)
+    res.json(fornisseurs)
+  }
+})
 
 //add sheep
 const createShip = asyncHandler(async (req, res) => {
@@ -149,6 +160,35 @@ const countSheepClient = asyncHandler(async (req, res) => {
   }
 })
 
+//register fornisseur
+const registerFornisseur = asyncHandler(async (req, res) => {
+  const { name, email, password } = req.body
+  const fornisseurExist = await Fornisseur.findOne({ email })
+  if (fornisseurExist) {
+    res.status(400)
+    throw new Error('fornisseur exist')
+  }
+  const fornisseur = await Fornisseur.create({
+    name,
+    email,
+    password,
+  })
+  if (fornisseur) {
+    res.status(201).json({
+      _id: fornisseur._id,
+      name: fornisseur.name,
+      email: fornisseur.email,
+      password: fornisseur.password,
+      token: generateToken(fornisseur._id),
+    })
+  } else {
+    res.status(400)
+    throw new Error('fornisseur exist')
+  }
+})
+
+//
+
 export {
   authUser,
   registerUser,
@@ -156,4 +196,6 @@ export {
   addsecondstep,
   createShip,
   countSheepClient,
+  getAllFornisseur,
+  registerFornisseur,
 }

@@ -1,13 +1,10 @@
 import express from 'express'
 const router = express.Router()
 import {
-  registerFornisseur,
-  getAllFornisseur,
   authFornisseur,
   testRoute,
   getMyShip,
 } from '../controllers/fornisseurController.js'
-import { admin, protect } from '../middelware/authMiddleware.js'
 import { clientProtect } from '../middelware/clientMiddelware.js'
 import {
   addfirststep,
@@ -16,17 +13,13 @@ import {
   createShip,
 } from '../controllers/userController.js'
 
-//get my ships
-router.route('/getmyship').get(clientProtect, getMyShip)
+import { getShipById } from '../controllers/shipController.js'
 
-// routes controller by admin
-router.route('/createfornisseur').post(protect, admin, registerFornisseur)
-router.route('/allfornisseur').get(protect, admin, getAllFornisseur)
-
-//routes
+//Login client
 router.route('/loginfornisseur').post(authFornisseur)
-router.route('/test').get(clientProtect, testRoute)
+// router.route('/test').get(clientProtect, testRoute)
 
+//add traitement
 //add first step route
 router.route('/addstep1client').post(clientProtect, addfirststep)
 
