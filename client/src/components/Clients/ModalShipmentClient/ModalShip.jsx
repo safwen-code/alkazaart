@@ -1,5 +1,6 @@
 import React from 'react'
 import { Modal, Box } from '@mui/material'
+import AddShippModal from './AddShipModal'
 
 const style = {
   position: 'absolute',
@@ -35,12 +36,7 @@ const ModalShip = ({ idship, open, handleClose }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={{ ...style, overflow: 'auto' }}>
-          hi{idship}
-          {/* <AddShippModal
-            idship={idship}
-            handleClose={handleClose}
-            updateShipmentList={updateShipmentList}
-          /> */}
+          <AddShippModal />
         </Box>
       </Modal>
     </div>

@@ -78,7 +78,6 @@ const ListShip = () => {
 
   //create button in cell render
   const renderGridCell = (data) => {
-    console.log(data)
     const { data: rowData } = data
 
     // Check if 'secondstep' and 'thridstep' exists and is not null or undefined
