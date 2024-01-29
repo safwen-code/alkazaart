@@ -26,7 +26,6 @@ const style = {
 }
 
 const ModalShip = ({ idship, open, handleClose }) => {
-  // console.log(idship, 'from modal ship')
   return (
     <div>
       <Modal
@@ -36,7 +35,11 @@ const ModalShip = ({ idship, open, handleClose }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={{ ...style, overflow: 'auto' }}>
-          <AddShippModal />
+          <AddShippModal
+            idship={idship}
+            open={open}
+            handleClose={handleClose}
+          />
         </Box>
       </Modal>
     </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   Box,
   Stepper,
@@ -15,8 +15,56 @@ import {
 } from '@mui/material'
 
 import AccountCircle from '@mui/icons-material/AccountCircle'
+import { useDispatch, useSelector } from 'react-redux'
+import { ShipByIdAction } from '../../../actions/clientAction'
+import { useState } from 'react'
 
-const AddShippModal = () => {
+const AddShippModal = ({ idship, open, handleClose }) => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(ShipByIdAction(idship))
+  }, [dispatch, idship])
+
+  //display data
+  const shipbyidClientReducer = useSelector(
+    (state) => state.shipbyidClientReducer,
+  )
+  const { shipbyid } = shipbyidClientReducer
+
+  //check for the stepthings
+  const isFirstStepExist =
+    shipbyid.firststep !== null && shipbyid.firststep !== undefined
+
+  const isSecondStepExist =
+    shipbyid.secondstep !== null && shipbyid.secondstep !== undefined
+
+  const isthirdStepExist =
+    shipbyid.thirdstep !== null && shipbyid.thirdstep !== undefined
+
+  useEffect(() => {
+    // Set initial step based on shipbyidReducer
+    if (isFirstStepExist && !isSecondStepExist && !isthirdStepExist) {
+      setActiveStep(1)
+    } else if (isFirstStepExist && isSecondStepExist && !isthirdStepExist) {
+      setActiveStep(2)
+    }
+  }, [
+    shipbyidClientReducer,
+    isFirstStepExist,
+    isSecondStepExist,
+    isthirdStepExist,
+  ])
+
+  //steps work
+  const [activeStep, setActiveStep] = useState(0)
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1)
+  }
+  //end steps work
+
+  const [shipdata, setshipdata] = useState('')
+
   return (
     <Box
       sx={{
