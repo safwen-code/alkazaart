@@ -10,7 +10,14 @@ import {
   MenuItem,
 } from '@mui/material'
 
-const SecondStepModal = ({ handleNext, setshipdata, handleClose }) => {
+import { updateShipModalAction } from '../../../actions/clientAction'
+
+const SecondStepModal = ({
+  handleNext,
+  setshipdata,
+  handleClose,
+  updateShipmentList,
+}) => {
   const [date, setdate] = useState('')
   const [orderstatus, setorderstatus] = useState('')
   const [scheduled, setscheduled] = useState('')
@@ -80,14 +87,14 @@ const SecondStepModal = ({ handleNext, setshipdata, handleClose }) => {
 
   //quite step
   const testQuit = () => {
-    // dispatch(updateShipModalAction(_id, datatosend))
-    //   .then(() => {
-    //     handleClose()
-    //     updateShipmentList()
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error creating fornisseur:', error)
-    //   })
+    dispatch(updateShipModalAction(_id, datatosend))
+      .then(() => {
+        handleClose()
+        updateShipmentList()
+      })
+      .catch((error) => {
+        console.error('Error creating fornisseur:', error)
+      })
   }
 
   return (

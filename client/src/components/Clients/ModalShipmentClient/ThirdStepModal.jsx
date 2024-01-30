@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Box, TextField, Button, Paper } from '@mui/material'
 
-const ThirdStepModal = ({ shipdata, handleClose }) => {
+import { updateShipModalAction } from '../../../actions/clientAction'
+
+const ThirdStepModal = ({ shipdata, handleClose, updateShipmentList }) => {
   const [etaSete, setetaSete] = useState('')
   const [etdMarseille, setetdMarseille] = useState('')
   const [etaRades, setetaRades] = useState('')
@@ -32,15 +34,14 @@ const ThirdStepModal = ({ shipdata, handleClose }) => {
   } = shipbyidClientReducer
 
   const confirmShip = () => {
-    console.log(datatosend)
-    // dispatch(updateShipModalAction(_id, datatosend))
-    //   .then(() => {
-    //     handleClose()
-    //     updateShipmentList()
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error creating fornisseur:', error)
-    //   })
+    dispatch(updateShipModalAction(_id, datatosend))
+      .then(() => {
+        handleClose()
+        updateShipmentList()
+      })
+      .catch((error) => {
+        console.error('Error creating fornisseur:', error)
+      })
     //work to :: send data /ship/adddata
     // console.log(datatosend)
     // console.log('confirm ship')
