@@ -1,27 +1,17 @@
 import React, { useState } from 'react'
 
-import IconButton from '@mui/material/IconButton'
-import Badge from '@mui/material/Badge'
 import MailIcon from '@mui/icons-material/Mail'
 import {
+  IconButton,
+  Badge,
   Collapse,
-  List,
   ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
   Menu,
   MenuItem,
   Typography,
 } from '@mui/material'
-import StarBorder from '@mui/icons-material/StarBorder'
 
 const Notification = () => {
-  //   const [open, setOpen] = useState(false)
-
-  //   const handleClick = () => {
-  //     setOpen(!open)
-  //   }
   const [OpenNotif, setOpenNotif] = useState(null)
   const handleOpenNotifMenu = (event) => {
     setOpenNotif(event.currentTarget)

@@ -9,12 +9,6 @@ import {
   Container,
   MenuItem,
   Avatar,
-  Collapse,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  ListItem,
 } from '@mui/material'
 
 import { useNavigate } from 'react-router-dom'
@@ -25,8 +19,6 @@ import { alpha } from '@mui/system'
 import { logoutuser } from '../actions/userActions'
 import { useDispatch } from 'react-redux'
 import Notification from './Notification'
-
-import StarBorder from '@mui/icons-material/StarBorder'
 
 const pages = [
   'listship',
