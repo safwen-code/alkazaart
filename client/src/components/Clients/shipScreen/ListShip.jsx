@@ -117,6 +117,11 @@ const ListShip = () => {
     )
   }
 
+  // update shipmentList and pass it like props
+  const updateShipmentList = () => {
+    dispatch(myShipsAction())
+  }
+
   return (
     <>
       {isModalOpen && (
@@ -125,7 +130,7 @@ const ListShip = () => {
           handleOpen={openModal}
           open={isModalOpen}
           idship={idship}
-          // updateShipmentList={updateShipmentList}
+          updateShipmentList={updateShipmentList}
         />
       )}{' '}
       <ListCardSheep />
