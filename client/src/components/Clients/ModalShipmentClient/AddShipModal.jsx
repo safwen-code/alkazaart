@@ -18,6 +18,8 @@ import AccountCircle from '@mui/icons-material/AccountCircle'
 import { useDispatch, useSelector } from 'react-redux'
 import { ShipByIdAction } from '../../../actions/clientAction'
 import { useState } from 'react'
+import SecondStepModal from './SecondStepModal'
+import ThirdStepModal from './ThirdStepModal'
 
 const AddShippModal = ({ idship, open, handleClose }) => {
   const dispatch = useDispatch()
@@ -32,15 +34,20 @@ const AddShippModal = ({ idship, open, handleClose }) => {
   )
   const { shipbyid } = shipbyidClientReducer
 
+  let isFirstStepExist = ''
+  let isSecondStepExist = ''
+  let isthirdStepExist = ''
   //check for the stepthings
-  const isFirstStepExist =
-    shipbyid.firststep !== null && shipbyid.firststep !== undefined
+  if (shipbyid) {
+    isFirstStepExist =
+      shipbyid.firststep !== null && shipbyid.firststep !== undefined
 
-  const isSecondStepExist =
-    shipbyid.secondstep !== null && shipbyid.secondstep !== undefined
+    isSecondStepExist =
+      shipbyid.secondstep !== null && shipbyid.secondstep !== undefined
 
-  const isthirdStepExist =
-    shipbyid.thirdstep !== null && shipbyid.thirdstep !== undefined
+    isthirdStepExist =
+      shipbyid.thirdstep !== null && shipbyid.thirdstep !== undefined
+  }
 
   useEffect(() => {
     // Set initial step based on shipbyidReducer
@@ -100,6 +107,7 @@ const AddShippModal = ({ idship, open, handleClose }) => {
       </Grid>
 
       <Stepper
+        activeStep={activeStep}
         orientation="vertical"
         sx={{
           display: 'flex',
@@ -127,7 +135,14 @@ const AddShippModal = ({ idship, open, handleClose }) => {
           >
             PRE-Shipment Process
           </StepLabel>
-          <StepContent>second step</StepContent>
+          <StepContent>
+            <SecondStepModal
+              handleNext={handleNext}
+              setshipdata={setshipdata}
+              handleClose={handleClose}
+              // updateShipmentList={updateShipmentList}
+            />
+          </StepContent>
         </Step>
         <Step>
           <StepLabel
@@ -138,7 +153,13 @@ const AddShippModal = ({ idship, open, handleClose }) => {
           >
             Shipment Process
           </StepLabel>
-          <StepContent>third step</StepContent>
+          <StepContent>
+            <ThirdStepModal
+              shipdata={shipdata}
+              handleClose={handleClose}
+              // updateShipmentList={updateShipmentList}
+            />
+          </StepContent>
         </Step>
       </Stepper>
     </Box>
