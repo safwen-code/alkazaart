@@ -38,6 +38,6 @@ router.route('/getmyship').get(clientProtect, getMyShip)
 router.route('/shipbyid/:id').get(clientProtect, getShipById)
 
 //update  my ships
-router.route('/updatecurrentship').post(clientProtect, updateCurrentShip)
+router.route('/updateclientship').post(clientProtect, updateCurrentShip)
 
 export default router

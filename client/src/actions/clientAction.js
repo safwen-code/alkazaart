@@ -191,7 +191,7 @@ export const updateShipModalAction = (id, datatosend) => async (
     }
 
     const { data } = await axios.post(
-      `/api/ship/updatecurrentship`,
+      `/api/client/updateclientship`,
       { id, datatosend },
       config,
     )

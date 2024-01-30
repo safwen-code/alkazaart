@@ -21,7 +21,7 @@ import { useState } from 'react'
 import SecondStepModal from './SecondStepModal'
 import ThirdStepModal from './ThirdStepModal'
 
-const AddShippModal = ({ idship, open, handleClose }) => {
+const AddShippModal = ({ idship, open, handleClose, updateShipmentList }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -140,7 +140,7 @@ const AddShippModal = ({ idship, open, handleClose }) => {
               handleNext={handleNext}
               setshipdata={setshipdata}
               handleClose={handleClose}
-              // updateShipmentList={updateShipmentList}
+              updateShipmentList={updateShipmentList}
             />
           </StepContent>
         </Step>
@@ -157,7 +157,7 @@ const AddShippModal = ({ idship, open, handleClose }) => {
             <ThirdStepModal
               shipdata={shipdata}
               handleClose={handleClose}
-              // updateShipmentList={updateShipmentList}
+              updateShipmentList={updateShipmentList}
             />
           </StepContent>
         </Step>
