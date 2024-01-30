@@ -17,7 +17,7 @@ router.post('/register', registerUser)
 router.route('/createfornisseur').post(protect, admin, registerFornisseur)
 
 //get all Client
-router.route('/allfornisseur').get(protect, admin, getAllFornisseur)
+router.route('/clients').get(protect, admin, getAllFornisseur)
 
 //get ships by id
 //client by id

@@ -2,7 +2,7 @@ import React from 'react'
 import AddShipp from './ListshipScreen/AddShipp.jsx'
 import ListShip from './ListshipScreen/ListShip.jsx'
 import CreateClient from './Clients/CreateClient.jsx'
-import ListClient from './Clients/ListClient.jsx'
+import ListClient from './ListshipScreen/ListClient.jsx'
 import AddUtilisateur from './Utilisateur/AddUtilisateur.jsx'
 import ListUtilisateur from './Utilisateur/ListUtilisateur.jsx'
 

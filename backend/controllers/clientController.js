@@ -47,18 +47,6 @@ const registerFornisseur = asyncHandler(async (req, res) => {
   }
 })
 
-//get all fornisseur
-const getAllFornisseur = asyncHandler(async (req, res) => {
-  const fornisseurs = await Fornisseur.find({}).sort({ createdAt: -1 })
-  if (!fornisseurs) {
-    res.status(400)
-    throw new Error('no fornisseurs')
-  } else {
-    res.status(201)
-    res.json(fornisseurs)
-  }
-})
-
 //test data
 const testRoute = asyncHandler(async (req, res) => {
   res.send('hi')
@@ -80,10 +68,4 @@ const getMyShip = asyncHandler(async (req, res) => {
   }
 })
 
-export {
-  getMyShip,
-  registerFornisseur,
-  getAllFornisseur,
-  authFornisseur,
-  testRoute,
-}
+export { getMyShip, registerFornisseur, authFornisseur, testRoute }

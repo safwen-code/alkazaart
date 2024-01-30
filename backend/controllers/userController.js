@@ -2,6 +2,7 @@ import User from '../models/userModel.js'
 import asyncHandler from 'express-async-handler'
 import generateToken from '../utils/generateToken.js'
 import Ship from '../models/shipModel.js'
+import Fornisseur from '../models/fornisseurModel.js'
 
 //auth user
 const authUser = asyncHandler(async (req, res) => {
@@ -21,7 +22,7 @@ const authUser = asyncHandler(async (req, res) => {
   }
 })
 
-//register
+//register user
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body
   const userExist = await User.findOne({ email })
@@ -83,17 +84,6 @@ const addsecondstep = asyncHandler(async (req, res) => {
   console.log(ship)
   const createdShip = await ship.save()
   res.status(201).json(createdShip)
-})
-//get all fornisseur
-const getAllFornisseur = asyncHandler(async (req, res) => {
-  const fornisseurs = await Fornisseur.find({}).sort({ createdAt: -1 })
-  if (!fornisseurs) {
-    res.status(400)
-    throw new Error('no fornisseurs')
-  } else {
-    res.status(201)
-    res.json(fornisseurs)
-  }
 })
 
 //add sheep
@@ -184,6 +174,18 @@ const registerFornisseur = asyncHandler(async (req, res) => {
   } else {
     res.status(400)
     throw new Error('fornisseur exist')
+  }
+})
+
+//get all fornisseur
+const getAllFornisseur = asyncHandler(async (req, res) => {
+  const fornisseurs = await Fornisseur.find({}).sort({ createdAt: -1 })
+  if (!fornisseurs) {
+    res.status(400)
+    throw new Error('no fornisseurs')
+  } else {
+    res.status(201)
+    res.json(fornisseurs)
   }
 })
 
