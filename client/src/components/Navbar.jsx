@@ -9,6 +9,12 @@ import {
   Container,
   MenuItem,
   Avatar,
+  Collapse,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  ListItem,
 } from '@mui/material'
 
 import { useNavigate } from 'react-router-dom'
@@ -18,6 +24,9 @@ import atvyl from '../images/atvyl.jpg'
 import { alpha } from '@mui/system'
 import { logoutuser } from '../actions/userActions'
 import { useDispatch } from 'react-redux'
+import Notification from './Notification'
+
+import StarBorder from '@mui/icons-material/StarBorder'
 
 const pages = [
   'listship',
@@ -145,7 +154,6 @@ const Navbar = ({ setActiveNavItem }) => {
             >
               Atvyl
             </Typography>
-
             <Box
               sx={{
                 flexGrow: 1,
@@ -214,7 +222,6 @@ const Navbar = ({ setActiveNavItem }) => {
             >
               Atvyl
             </Typography>
-
             <Box
               sx={{
                 flexGrow: 1,
@@ -231,6 +238,9 @@ const Navbar = ({ setActiveNavItem }) => {
                 </Button>
               ))}
             </Box>
+            <Box>
+              <Notification />
+            </Box>{' '}
             <Button color="inherit" onClick={logoutHundler}>
               Log Out
             </Button>
