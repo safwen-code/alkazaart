@@ -32,6 +32,7 @@ const ThirdStepModal = ({ shipdata, handleClose }) => {
   } = shipbyidClientReducer
 
   const confirmShip = () => {
+    console.log(datatosend)
     // dispatch(updateShipModalAction(_id, datatosend))
     //   .then(() => {
     //     handleClose()

@@ -9,7 +9,10 @@ import {
   createShip,
 } from '../controllers/userController.js'
 
-import { getShipById } from '../controllers/shipController.js'
+import {
+  getShipById,
+  updateCurrentShip,
+} from '../controllers/shipController.js'
 
 //Login client
 router.route('/loginfornisseur').post(authFornisseur)
@@ -33,5 +36,8 @@ router.route('/getmyship').get(clientProtect, getMyShip)
 
 //get ship by id
 router.route('/shipbyid/:id').get(clientProtect, getShipById)
+
+//update  my ships
+router.route('/updatecurrentship').post(clientProtect, updateCurrentShip)
 
 export default router
