@@ -14,6 +14,9 @@ import {
   GET_SHIPID_REQUEST,
   GET_SHIPID_SUCCESS,
   GET_SHIPID_FAIL,
+  UPDATE_MODAL_SHIP_CLIENT_REQUEST,
+  UPDATE_MODAL_SHIP_CLIENT_SUCCESS,
+  UPDATE_MODAL_SHIP_CLIENT_FAIL,
 } from '../constants/clientConstants'
 
 export const clientCreateReducer = (state = {}, action) => {
@@ -78,6 +81,21 @@ export const shipbyidClientReducer = (state = {}, action) => {
     case GET_SHIPID_SUCCESS:
       return { loading: false, success: true, shipbyid: action.payload }
     case GET_SHIPID_FAIL:
+      return { loading: false, error: action.payload }
+
+    default:
+      return state
+  }
+}
+
+//update second step || third step Modal
+export const updateStepClientReducer = (state = {}, action) => {
+  switch (action.type) {
+    case UPDATE_MODAL_SHIP_CLIENT_REQUEST:
+      return { loading: true }
+    case UPDATE_MODAL_SHIP_CLIENT_SUCCESS:
+      return { loading: false, success: true, ...action.payload }
+    case UPDATE_MODAL_SHIP_CLIENT_FAIL:
       return { loading: false, error: action.payload }
 
     default:

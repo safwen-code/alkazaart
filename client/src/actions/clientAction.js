@@ -14,6 +14,9 @@ import {
   GET_SHIPID_REQUEST,
   GET_SHIPID_SUCCESS,
   GET_SHIPID_FAIL,
+  UPDATE_MODAL_SHIP_CLIENT_REQUEST,
+  UPDATE_MODAL_SHIP_CLIENT_SUCCESS,
+  UPDATE_MODAL_SHIP_CLIENT_FAIL,
 } from '../constants/clientConstants'
 import axios from 'axios'
 
@@ -159,6 +162,43 @@ export const ShipByIdAction = (id) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: GET_SHIPID_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+//update secondstep || thirdstep modal
+export const updateShipModalAction = (id, datatosend) => async (
+  dispatch,
+  getState,
+) => {
+  try {
+    dispatch({
+      type: UPDATE_MODAL_SHIP_CLIENT_REQUEST,
+    })
+    const {
+      clientLogin: { clientinfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `bearer ${clientinfo.token}`,
+      },
+    }
+
+    const { data } = await axios.post(
+      `/api/ship/updatecurrentship`,
+      { id, datatosend },
+      config,
+    )
+    dispatch({ type: UPDATE_MODAL_SHIP_CLIENT_SUCCESS, payload: data.update })
+  } catch (error) {
+    dispatch({
+      type: UPDATE_MODAL_SHIP_CLIENT_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
