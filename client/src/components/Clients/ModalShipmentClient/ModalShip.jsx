@@ -25,7 +25,7 @@ const style = {
   },
 }
 
-const ModalShip = ({ idship, open, handleClose }) => {
+const ModalShip = ({ idship, open, handleClose, updateShipmentList }) => {
   return (
     <div>
       <Modal
@@ -39,6 +39,7 @@ const ModalShip = ({ idship, open, handleClose }) => {
             idship={idship}
             open={open}
             handleClose={handleClose}
+            updateShipmentList={updateShipmentList}
           />
         </Box>
       </Modal>
