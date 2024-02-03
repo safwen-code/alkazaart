@@ -149,7 +149,7 @@ export const listnotification = (state = {}, action) => {
   switch (action.type) {
     case LIST_NOTIFICATION:
       return {
-        mynotification: { ...action.payload },
+        mynotification: action.payload,
       }
     default:
       return state

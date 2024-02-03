@@ -10,7 +10,9 @@ import {
   MenuItem,
   Typography,
 } from '@mui/material'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { listnotificationAdmin } from '../actions/userActions'
 
 const Notification = () => {
   const [OpenNotif, setOpenNotif] = useState(null)
@@ -20,18 +22,28 @@ const Notification = () => {
   const handleCloseNotifMenu = () => {
     setOpenNotif(null)
   }
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(listnotificationAdmin())
+  }, [dispatch])
+  const listnotification = useSelector((state) => state.listnotification)
+  const { mynotification } = listnotification
+
+  console.log(mynotification)
   return (
     <ListItem disablePadding>
       <IconButton aria-atomic onClick={handleOpenNotifMenu}>
-        <Badge badgeContent={10} color="secondary">
+        <Badge badgeContent={mynotification.length} color="secondary">
           <MailIcon />
         </Badge>
       </IconButton>
       <Collapse in={OpenNotif} timeout="auto" unmountOnExit>
         <Menu
-          sx={{ mt: '45px' }}
-          id="menu-appbar"
           anchorEl={OpenNotif}
+          id="menu-appbar"
+          sx={{
+            mt: '45px',
+          }}
           anchorOrigin={{
             vertical: 'top',
             horizontal: 'right',
@@ -44,11 +56,15 @@ const Notification = () => {
           open={Boolean(OpenNotif)}
           onClose={handleCloseNotifMenu}
         >
-          {/* {settings.map((setting) => ( */}
-          <MenuItem onClick={handleCloseNotifMenu}>
-            <Typography textAlign="center">setting</Typography>
-          </MenuItem>
-          {/* ))} */}
+          {mynotification.map((notif) => {
+            return (
+              <MenuItem onClick={handleCloseNotifMenu}>
+                <Typography textAlign="center" key={notif.id}>
+                  {notif.message}
+                </Typography>
+              </MenuItem>
+            )
+          })}
         </Menu>
       </Collapse>
     </ListItem>

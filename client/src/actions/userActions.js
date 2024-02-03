@@ -18,6 +18,7 @@ import {
   LIST_NOTIFICATION,
 } from '../constants/userConstant'
 import axios from 'axios'
+import { notife } from './datanotif'
 
 export const loginuser = (email, password) => async (dispatch) => {
   dispatch({
@@ -195,8 +196,9 @@ export const notifyShipment = (id, message) => async (dispatch) => {
 }
 
 //get data notification
-export const listnotification = () => async (dispatch) => {
+export const listnotificationAdmin = () => async (dispatch) => {
   dispatch({
     type: LIST_NOTIFICATION,
+    payload: notife,
   })
 }
