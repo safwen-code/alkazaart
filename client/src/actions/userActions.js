@@ -15,6 +15,7 @@ import {
   NBR_CLIENTSHIP_SUCCESS,
   NBR_CLIENTSHIP_FAIL,
   SEND_NOTIFICATION,
+  LIST_NOTIFICATION,
 } from '../constants/userConstant'
 import axios from 'axios'
 
@@ -190,5 +191,12 @@ export const notifyShipment = (id, message) => async (dispatch) => {
   dispatch({
     type: SEND_NOTIFICATION,
     payload: { id, message },
+  })
+}
+
+//get data notification
+export const listnotification = () => async (dispatch) => {
+  dispatch({
+    type: LIST_NOTIFICATION,
   })
 }

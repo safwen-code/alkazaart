@@ -10,6 +10,7 @@ import {
   MenuItem,
   Typography,
 } from '@mui/material'
+import { useSelector } from 'react-redux'
 
 const Notification = () => {
   const [OpenNotif, setOpenNotif] = useState(null)
@@ -19,7 +20,6 @@ const Notification = () => {
   const handleCloseNotifMenu = () => {
     setOpenNotif(null)
   }
-
   return (
     <ListItem disablePadding>
       <IconButton aria-atomic onClick={handleOpenNotifMenu}>
