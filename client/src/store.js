@@ -10,6 +10,7 @@ import {
   step2Reducer,
   clientshipNbrReducer,
   sendnotifiction,
+  listnotification,
 } from './reducer/userReducers'
 import {
   shipCreateReducer,
@@ -50,6 +51,7 @@ const reducer = combineReducers({
   addShipStep2: addShippSecondstepReducer,
   updateStep: updateStepReducer,
   sendnotifiction,
+  listnotification,
   /**** */
   clientCreate: clientCreateReducer,
   clientList: AllclientReducer,
