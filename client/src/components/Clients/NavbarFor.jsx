@@ -16,6 +16,7 @@ import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
 import atvyl from '../../images/atvyl.jpg'
 import { alpha } from '@mui/system'
+import Notification from './Notification'
 
 const pages = ['myships', 'addship']
 
@@ -96,7 +97,6 @@ const NavbarFor = ({ setActiveNavItem }) => {
             >
               Atvyl
             </Typography>
-
             <Box
               sx={{
                 flexGrow: 1,
@@ -165,7 +165,6 @@ const NavbarFor = ({ setActiveNavItem }) => {
             >
               Atvyl
             </Typography>
-
             <Box
               sx={{
                 flexGrow: 1,
@@ -182,6 +181,9 @@ const NavbarFor = ({ setActiveNavItem }) => {
                 </Button>
               ))}
             </Box>
+            <Box>
+              <Notification />
+            </Box>{' '}
           </Toolbar>
         </Container>
       </AppBar>
