@@ -9,6 +9,7 @@ import {
   step1Reducer,
   step2Reducer,
   clientshipNbrReducer,
+  sendnotifiction,
 } from './reducer/userReducers'
 import {
   shipCreateReducer,
@@ -48,7 +49,7 @@ const reducer = combineReducers({
   addShipStep1: addShippFirststepReducer,
   addShipStep2: addShippSecondstepReducer,
   updateStep: updateStepReducer,
-
+  sendnotifiction,
   /**** */
   clientCreate: clientCreateReducer,
   clientList: AllclientReducer,

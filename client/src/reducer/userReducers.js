@@ -15,6 +15,7 @@ import {
   NBR_CLIENTSHIP_REQUEST,
   NBR_CLIENTSHIP_SUCCESS,
   NBR_CLIENTSHIP_FAIL,
+  SEND_NOTIFICATION,
 } from '../constants/userConstant'
 export const loginReducer = (state = {}, action) => {
   switch (action.type) {
@@ -123,6 +124,19 @@ export const clientshipNbrReducer = (state = {}, action) => {
       return { loading: false, nbrships: action.payload }
     case NBR_CLIENTSHIP_FAIL:
       return { loading: false, error: action.payload }
+
+    default:
+      return state
+  }
+}
+
+//send notif
+export const sendnotifiction = (state = {}, action) => {
+  switch (action.type) {
+    case SEND_NOTIFICATION:
+      return {
+        notification: { ...action.payload },
+      }
 
     default:
       return state
