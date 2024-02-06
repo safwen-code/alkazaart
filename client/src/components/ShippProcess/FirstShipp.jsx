@@ -239,8 +239,10 @@ const FirstShipp = ({
               label="Delivery Terms"
               onChange={(e) => setdeliveryterms(e.target.value)}
             >
-              {deliverytermsInfo.map((devterm) => (
-                <MenuItem value={devterm}>{devterm}</MenuItem>
+              {deliverytermsInfo.map((index, devterm) => (
+                <MenuItem key={index} value={devterm}>
+                  {devterm}
+                </MenuItem>
               ))}
             </Select>
           </FormControl>
