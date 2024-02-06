@@ -70,7 +70,6 @@ export const clientListAction = () => async (dispatch, getState) => {
     }
 
     const { data } = await axios.get('/api/users/clients', config)
-    console.log(data)
     dispatch({ type: ALL_CLIENT_SUCCESS, payload: data })
   } catch (error) {
     dispatch({
