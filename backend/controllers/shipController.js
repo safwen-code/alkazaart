@@ -1,6 +1,7 @@
 import Ship from '../models/shipModel.js'
 import asyncHandler from 'express-async-handler'
 import Fornisseur from '../models/fornisseurModel.js'
+import nodemailer from 'nodemailer'
 
 //get allShip
 const getAllShip = asyncHandler(async (req, res) => {
@@ -75,8 +76,7 @@ const addfirststep = asyncHandler(async (req, res) => {
   const fornisseurdata = await Fornisseur.findById({ _id: id })
   let { name, email, createdAt } = fornisseurdata
 
-  let { firststep } = req.body.firststep
-
+  let { firststep } = req.body
   //create product
   const ship = new Ship({
     fornisseur: id,
@@ -86,10 +86,39 @@ const addfirststep = asyncHandler(async (req, res) => {
     firststep,
   })
 
-  // console.log(ship)
   const createdShip = await ship.save()
+  // Send email to the supplier
+  sendEmailToSupplier(
+    'safwendjebbi1234@gmail.com',
+    'First Step Completed',
+    'The first step has been completed for your product.',
+  )
+
   res.status(201).json(createdShip)
 })
+
+// Function to send email using nodemailer
+const sendEmailToSupplier = async (to, subject, text) => {
+  // Configure the email transporter (you need to replace the placeholders with your actual email details)
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'safwendjebbi1234@gmail.com',
+      pass: 'qwaj tpjl bpcy rdls',
+    },
+  })
+
+  // Configure the email options
+  const mailOptions = {
+    from: 'safwendjebbi1234@gmail.com',
+    to,
+    subject,
+    text,
+  }
+
+  // Send the email
+  await transporter.sendMail(mailOptions)
+}
 
 //add the Second step
 const addsecondstep = asyncHandler(async (req, res) => {

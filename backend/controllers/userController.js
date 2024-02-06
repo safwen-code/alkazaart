@@ -3,6 +3,7 @@ import asyncHandler from 'express-async-handler'
 import generateToken from '../utils/generateToken.js'
 import Ship from '../models/shipModel.js'
 import Fornisseur from '../models/fornisseurModel.js'
+import nodemailer from 'nodemailer'
 
 //auth user
 const authUser = asyncHandler(async (req, res) => {
@@ -62,8 +63,9 @@ const addfirststep = asyncHandler(async (req, res) => {
     fornisseur: req.client.id,
   })
 
-  // console.log(ship)
+  console.log(ship)
   const createdShip = await ship.save()
+
   res.status(201).json(createdShip)
 })
 
