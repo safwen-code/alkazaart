@@ -132,8 +132,10 @@ const SecondStep = ({
               label="Order Status"
               onChange={(e) => setorderstatus(e.target.value)}
             >
-              {orderstatusInfo.map((order) => (
-                <MenuItem value={order}>{order}</MenuItem>
+              {orderstatusInfo.map((order, index) => (
+                <MenuItem key={index} value={order}>
+                  {order}
+                </MenuItem>
               ))}
             </Select>
           </FormControl>
