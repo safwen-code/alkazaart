@@ -59,9 +59,6 @@ const AddShipp = ({ setActiveNavItem }) => {
   }
   //end steps work
 
-  if (shipdata) {
-    console.log(shipdata)
-  }
   const handleReset = () => {
     setActiveStep(0)
   }
