@@ -239,7 +239,7 @@ const FirstShipp = ({
               label="Delivery Terms"
               onChange={(e) => setdeliveryterms(e.target.value)}
             >
-              {deliverytermsInfo.map((index, devterm) => (
+              {deliverytermsInfo.map((devterm, index) => (
                 <MenuItem key={index} value={devterm}>
                   {devterm}
                 </MenuItem>
