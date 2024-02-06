@@ -230,9 +230,7 @@ const Navbar = ({ setActiveNavItem }) => {
                 </Button>
               ))}
             </Box>
-            <Box>
-              <Notification />
-            </Box>{' '}
+            <Box>{/* <Notification /> */}</Box>{' '}
             <Button color="inherit" onClick={logoutHundler}>
               Log Out
             </Button>

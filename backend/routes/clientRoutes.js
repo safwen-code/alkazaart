@@ -7,7 +7,7 @@ import {
   addsecondstep,
   countSheepClient,
   createShip,
-} from '../controllers/userController.js'
+} from '../controllers/clientController.js'
 
 import {
   getShipById,
