@@ -63,7 +63,7 @@ const addfirststep = asyncHandler(async (req, res) => {
     fornisseur: req.client.id,
   })
 
-  console.log(ship)
+  // console.log(ship)
   const createdShip = await ship.save()
 
   res.status(201).json(createdShip)
