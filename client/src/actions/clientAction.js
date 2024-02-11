@@ -37,7 +37,7 @@ export const clientCreateAction = (dataform) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.post(
-      '/api/client/createfornisseur',
+      '/api/users/createfornisseur',
       dataform,
       config,
     )
